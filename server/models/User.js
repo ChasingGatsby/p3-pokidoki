@@ -30,19 +30,26 @@ const userSchema = new Schema({
   },
   bio: {
     type: String,
-    trim: true,
   },
   pokemon: {
-    type: String,
-    required: true,
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: [String],
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
   },
   berry: {
     type: String,
-    required: true,
   },
   heldItem: {
     type: String,
-    required: true,
   },
   joinDate: {
     type: Date,
@@ -50,7 +57,7 @@ const userSchema = new Schema({
   },
   matches: {
     type: [Schema.Types.ObjectId],
-    ref: "Match",
+    ref: "User",
   },
 });
 
