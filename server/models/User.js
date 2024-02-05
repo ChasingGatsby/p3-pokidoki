@@ -57,7 +57,7 @@ const userSchema = new Schema({
   },
   matches: {
     type: [Schema.Types.ObjectId],
-    ref: "Match",
+    ref: "User",
   },
 });
 
