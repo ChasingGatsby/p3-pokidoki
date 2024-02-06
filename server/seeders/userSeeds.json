@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "J",
+    "lastName": "Cabaluna",
+    "username": "Gatsbeau",
+    "email": "getaway@fromme.com",
+    "password": "password1",
+    "bio": "I suuck at this game...",
+    "pokemon": {
+      "name": "Orbeetle",
+      "type": ["Bug", "Psychic"],
+      "image": "https://img.pokemondb.net/artwork/large/orbeetle.jpg"
+    },
+    "berry": "Cheri",
+    "heldItem": "Leftovers"
+  },
+  {
+    "firstName": "Carlos",
+    "lastName": "Espinol",
+    "username": "Crabby",
+    "email": "getaway@fromyou.com",
+    "password": "password2",
+    "bio": "I suuck at this game too...",
+    "pokemon": {
+      "name": "Kingler",
+      "type": ["Water"],
+      "image": "https://img.pokemondb.net/artwork/large/kingler.jpg"
+    },
+    "berry": "Chesto",
+    "heldItem": "Mystic Water"
+  }
+]
