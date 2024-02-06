@@ -1,10 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:wght@300;400&family=Young+Serif&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap')
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+*{
+margin: 0;
+padding: 0;
 }
 
 body {
@@ -14,12 +13,33 @@ body {
     margin: 0;
 }
 
-li, a, button {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgb(142, 178, 255);
+li, a, button::before{
+    color: rgb(255, 215, 142);
+    text-shadow: 2px 2px 3px rgb(71, 98, 187);
     text-decoration: none;
+    font-family: "Sixtyfour", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    transition: all 0.3 ease 0s;  
+    font-variation-settings:
+      "BLED" 0,
+      "SCAN" 0;
+}
+
+li :hover {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 3px rgb(71, 98, 187);
+    text-decoration: none;
+    font-family: "Sixtyfour", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    font-variation-settings:
+      "BLED" 0,
+      "SCAN" 0;
 }
 
 header{
@@ -27,4 +47,17 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+button {
+    padding: 9px;
 }
