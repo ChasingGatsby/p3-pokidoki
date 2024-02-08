@@ -1,14 +1,45 @@
 // need to add everything we need for our user typedef
+
 const typeDefs = `
-type User {
-    _id: ID
-    username: String
-    email: String
-    
-},
+type Pokemon {
+  name: String!
+  type: [String!]
+  image: String
+}
+
+type Match {
+  firstName: String!
+  lastName: String!
+  image: String!
+}
+
+type Users {
+  _id: ID
+  firstName: String!
+  lastName: String!
+
+}
+
+type Profile {
+  _id: ID
+  firstName: String!
+  lastName: String!
+}
+
+type Auth {
+  token: ID!
+  user: Profile
+}
+
 type Query {
-    users: [User]
-    user(id: ID!): User
-  }`;
+  getProfile: Profile
+  getAllProfiles: [Users]
+}
+
+type Mutation {
+  addUser(username: String!, email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
+}
+`;
 
 module.exports = typeDefs;
