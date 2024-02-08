@@ -13,7 +13,7 @@ body {
     margin: 0;
 }
 
-li, a, button::before{
+li, a, label, button::before{
     color: rgb(255, 215, 142);
     text-shadow: 2px 2px 3px rgb(71, 98, 187);
     text-decoration: none;

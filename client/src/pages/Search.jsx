@@ -1,97 +1,98 @@
-import React, { useEffect, useState } from 'react';
-import { useCombobox } from 'downshift';
+import React, { useEffect, useState } from "react";
+import { useQuery, gql } from "@apollo/client";
 
-export default function Search({ fetchUrl }) {
-  const [inputItems, setInputItems] = useState([]);
-  const [items, setItems] = useState([]);
+// Define your GraphQL query
+
+export default function Search() {
+  // const { loading, error, data } = useQuery(GET_USERS);
+  const [pokemon, setPokemon] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(""); // Add this line
+  const [type, setType] = useState("");
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error :(</p>;
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const response = await fetch(fetchUrl);
-      const data = await response.json();
-      setItems(data.results.map((item) => item.name));
-    };
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+      .then((response) => response.json())
+      .then((data) => setPokemon(data.results));
+  }, []);
 
-    fetchItems();
-  }, [fetchUrl]);
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/type/")
+      .then((response) => response.json())
+      .then((data) => setType(data.results));
+  });
 
-  // const {
-  //   isOpen,
-  //   selectedItem,
-  //   getInputProps,
-  //   getComboboxProps,
-  //   getItemProps,
-  //   getLabelProps,
-  //   getMenuProps,
-  //   highlightedIndex,
-  // } = useCombobox({
-  //   items: inputItems,
-  //   onInputValueChange: ({ inputValue }) => {
-  //     setInputItems(
-  //       items.filter((item) =>
-  //         item.toLowerCase().startsWith(inputValue.toLowerCase())
-  //       )
-  //     );
-  //   },
-  // });
+  function formatName(string) {
+    let formattedString = string.charAt(0).toUpperCase() + string.slice(1);
+    formattedString = formattedString.replace(/-/g, " ");
+    return formattedString;
+  }
+
+  const handleChange = (event) => {
+    // Add this function
+    setSelectedItem(event.target.value);
+  };
 
   return (
-    // <div>
-    //   <label {...getLabelProps()}>Choose an item:</label>
-    //   <div {...getComboboxProps()}>
-    //     <input {...getInputProps()} />
-    //   </div>
-    //   <ul {...getMenuProps()}>
-    //     {isOpen &&
-    //       inputItems.map((item, index) => (
-    //         <li
-    //           style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-    //           key={`${item}${index}`}
-    //           {...getItemProps({ item, index })}
-    //         >
-    //           {item}
-    //         </li>
-    //       ))}
-    //   </ul>
-    // </div>
     <div className="container m-5">
-    <form>
-      <div className="form-group my-3">
-        <label htmlFor="exampleInputName">Your Names</label>
-        <input
-          type="name"
-          className="form-control"
-          id="exampleInputName"
-          aria-describedby="NameHelp"
-          placeholder="Enter your name"
-          style={{ width: "60%" }}
-        />
+      <div className="row">
+        <div className="col">
+          <form>
+            <div className="form-group my-3">
+              <label htmlFor="dropdown">Search for a Pokemon!</label>
+              <select
+                className="form-control"
+                id="dropdown"
+                style={{ width: "50%" }}
+                onChange={handleChange}
+              >
+                {pokemon.map((item, index) => (
+                  <option key={index} value={item.name}>
+                    {formatName(item.name)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </form>
+
+          {selectedItem && (
+            <img
+              src={`https://img.pokemondb.net/artwork/large/${selectedItem}.jpg`}
+              style={{ width: "200px", height: "200px" }}
+              className="img-thumbnail"
+              alt={selectedItem}
+            />
+          )}
+          {/* Add this line to display the selected item */}
+          <button type="button" className="btn btn-danger">
+            Search
+          </button>
+        </div>
+
+        <div className="col">
+          <form>
+            <div className="form-group my-3">
+              <label htmlFor="dropdown">Search for a Type!</label>
+              <select
+                className="form-control"
+                id="dropdown"
+                style={{ width: "50%" }}
+              >
+                {type.map((item, index) => (
+                  <option key={index} value={item.name}>
+                    {formatName(item.name)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </form>
+          <button type="button" className="btn btn-danger">
+            Search
+          </button>
+        </div>
       </div>
-      <div className="form-group my-3">
-        <label htmlFor="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          style={{ width: "60%" }}
-        />
-      </div>
-      <div className="input-group d-block">
-        <label htmlFor="exampleInputMessage"> Your Message: </label>
-        <div className="input-group-prepend"></div>
-        <textarea
-          className="form-control mb-2"
-          aria-label="With textarea"
-          defaultValue={""}
-          style={{ width: "500px" }}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
-  </div>
+    </div>
   );
 }
