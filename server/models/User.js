@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const messageSchema = require("./Message");
 
 const userSchema = new Schema({
   firstName: {
@@ -61,6 +62,8 @@ const userSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: "User",
   },
+  sentMessages: [messageSchema],
+  receivedMessages: [messageSchema],
 });
 
 userSchema.pre("save", async function (next) {
@@ -69,6 +72,7 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 });
+
 
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
