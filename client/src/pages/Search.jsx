@@ -7,7 +7,7 @@ export default function Search() {
   // const { loading, error, data } = useQuery(GET_USERS);
   const [pokemon, setPokemon] = useState([]);
   const [selectedItem, setSelectedItem] = useState(""); // Add this line
-  const [type, setType] = useState("");
+  const [type, setType] = useState([]);
 
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error :(</p>;
@@ -22,7 +22,7 @@ export default function Search() {
     fetch("https://pokeapi.co/api/v2/type/")
       .then((response) => response.json())
       .then((data) => setType(data.results));
-  });
+  }, []);
 
   function formatName(string) {
     let formattedString = string.charAt(0).toUpperCase() + string.slice(1);
