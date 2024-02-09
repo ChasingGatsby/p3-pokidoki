@@ -45,12 +45,12 @@ export const GET_PROFILES_BY_POKEMON = gql`
 `;
 
 export const GET_PROFILES_BY_TYPE = gql`
-  query getProfilesByType($type: [String!]!) {
+  query getProfilesByType($type: String!) {
     getProfilesByType(type: $type) {
       _id
       firstName
       lastName
-      userName
+      username
       email
       bio
       pokemon {

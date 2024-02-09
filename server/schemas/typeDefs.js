@@ -46,7 +46,7 @@ type Query {
   getProfile: Profile
   getAllProfiles: [Users]
   getProfilesByPokemon(name: String!): [Users]
-  getProfilesByType(type: String!): Profile
+  getProfilesByType(type: String!): [Users]
 }
 
 type Mutation {
