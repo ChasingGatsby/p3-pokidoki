@@ -5,12 +5,12 @@ const messageSchema = require("./Message");
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
+   
     trim: true,
   },
   lastName: {
     type: String,
-    required: true,
+    
     trim: true,
   },
   username: {
@@ -36,15 +36,12 @@ const userSchema = new Schema({
   pokemon: {
     name: {
       type: String,
-      required: true,
     },
     type: {
       type: [String],
-      required: true,
     },
     image: {
       type: String,
-      required: true,
     },
   },
   berry: {
@@ -72,7 +69,6 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 });
-
 
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);

@@ -2,28 +2,30 @@
 
 const typeDefs = `
 type Pokemon {
-  name: String!
-  type: [String!]
+  name: String
+  type: [String]
   image: String
 }
 
 type Match {
-  firstName: String!
-  lastName: String!
-  image: String!
+  firstName: String
+  lastName: String
+  image: String
 }
 
 type Users {
   _id: ID
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
 
 }
 
 type Profile {
   _id: ID
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
+  username: String
+  email: String
 }
 
 type Auth {
