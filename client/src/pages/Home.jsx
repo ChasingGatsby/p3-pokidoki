@@ -1,9 +1,13 @@
+
 const Home = () => {
   return (
+   
     <main>
       {" "}
       <div>Just placeholder text</div>{" "}
+     
     </main>
+   
   );
 };
 
