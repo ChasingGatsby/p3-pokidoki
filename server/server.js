@@ -12,19 +12,7 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
 });
-
-const authenticateToken = async (req, res, next) => {
-  const idToken = req.headers.authorization;
-  try {
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    req.user = decodedToken;
-    next();
-  } catch (err) {
-    res.status(403).send("Unauthorized");
-  }
-};
 
 const startApolloServer = async () => {
   await server.start();
@@ -34,7 +22,6 @@ const startApolloServer = async () => {
 
   app.use(
     "/graphql",
-    authenticateToken,
     expressMiddleware(server, {
       context: authMiddleware,
     })
