@@ -51,7 +51,7 @@ export default function Search() {
   };
 
   const handlePokemonSearch = () => {
-    getProfilesByPokemon({ variables: { pokemon: selectedItem } });
+    getProfilesByPokemon({ variables: { pokemonName: selectedItem } });
     setActiveQuery("pokemon");
   };
 
@@ -137,7 +137,7 @@ export default function Search() {
           data.getProfilesByPokemon.length > 0 &&
           data.getProfilesByPokemon.map((profile) => (
             <SearchResult
-            id = {profile._id}
+              id={profile._id}
               name={profile.firstName}
               pokemon={profile.pokemon.name}
               image={profile.pokemon.image}
@@ -148,7 +148,7 @@ export default function Search() {
           dataType.getProfilesByType.length > 0 &&
           dataType.getProfilesByType.map((profile) => (
             <SearchResult
-              id = {profile._id}
+              id={profile._id}
               name={profile.firstName}
               pokemon={profile.pokemon.name}
               image={profile.pokemon.image}

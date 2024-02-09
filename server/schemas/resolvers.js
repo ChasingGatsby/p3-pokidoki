@@ -13,7 +13,7 @@ const resolvers = {
       }
     },
     getProfilesByPokemon: async (parent, { pokemon }) => {
-      return await User.find({ pokemon });
+      return await User.find({ "pokemon.name": pokemon });
     },
     getProfilesByType: async (parent, { type }) => {
       return await User.find({ type: { $in: [type] } });

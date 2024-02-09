@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_PROFILE = gql`
-  query getProfile ($id: ID!) {
-    getProfile(_id: $id){
+  query getProfile($id: ID!) {
+    getProfile(_id: $id) {
       _id
       firstName
       lastName
@@ -25,12 +25,12 @@ export const GET_PROFILE = gql`
 `;
 
 export const GET_PROFILES_BY_POKEMON = gql`
-  query getProfilesByPokemon($pokemon: String!) {
-    getProfilesByPokemon(pokemon: $pokemon) {
+  query getProfilesByPokemon($pokemonName: String!) {
+    getProfilesByPokemon(name: $pokemonName) {
       _id
       firstName
       lastName
-      userName
+      username
       email
       bio
       pokemon {
@@ -41,9 +41,10 @@ export const GET_PROFILES_BY_POKEMON = gql`
       berry
       heldItem
     }
-  }`
+  }
+`;
 
-  export const GET_PROFILES_BY_TYPE = gql`
+export const GET_PROFILES_BY_TYPE = gql`
   query getProfilesByType($type: [String!]!) {
     getProfilesByType(type: $type) {
       _id
@@ -60,7 +61,8 @@ export const GET_PROFILES_BY_POKEMON = gql`
       berry
       heldItem
     }
-  }`
+  }
+`;
 
 export const GET_ALL_PROFILES = gql`
   query getAllProfiles {
@@ -78,7 +80,6 @@ export const GET_ALL_PROFILES = gql`
       }
       berry
       heldItem
-    
     }
   }
 `;
