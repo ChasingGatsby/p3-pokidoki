@@ -36,6 +36,8 @@ type Auth {
 type Query {
   getProfile: Profile
   getAllProfiles: [Users]
+  getProfilesByPokemon: Profile
+  getProfilesByType: Profile
 }
 
 type Mutation {
