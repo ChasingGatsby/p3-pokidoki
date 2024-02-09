@@ -25,8 +25,8 @@ export const GET_PROFILE = gql`
 `;
 
 export const GET_PROFILES_BY_POKEMON = gql`
-  query getProfilesByPokemon($pokemonName: String!) {
-    getProfilesByPokemon(name: $pokemonName) {
+  query getProfilesByPokemon($name: String!) {
+    getProfilesByPokemon(name: $name) {
       _id
       firstName
       lastName

@@ -12,8 +12,11 @@ const resolvers = {
         return await User.findOne({ _id: context.user._id });
       }
     },
-    getProfilesByPokemon: async (parent, { pokemon }) => {
-      return await User.find({ "pokemon.name": pokemon });
+    getProfilesByPokemon: async (parent, { name } ) => {
+      console.log(name);
+     const results = await User.find({ "pokemon.name": name })
+      console.log(results)
+      return results ;
     },
     getProfilesByType: async (parent, { type }) => {
       return await User.find({ type: { $in: [type] } });
