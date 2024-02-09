@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_PROFILE = gql`
   query getProfile ($id: ID!) {
-    getProfile( where :(_id: $id)) {
+    getProfile(_id: $id){
       _id
       firstName
       lastName
@@ -23,6 +23,44 @@ export const GET_PROFILE = gql`
     }
   }
 `;
+
+export const GET_PROFILES_BY_POKEMON = gql`
+  query getProfilesByPokemon($pokemon: String!) {
+    getProfilesByPokemon(pokemon: $pokemon) {
+      _id
+      firstName
+      lastName
+      userName
+      email
+      bio
+      pokemon {
+        name
+        type
+        image
+      }
+      berry
+      heldItem
+    }
+  }`
+
+  export const GET_PROFILES_BY_TYPE = gql`
+  query getProfilesByType($type: [String!]!) {
+    getProfilesByType(type: $type) {
+      _id
+      firstName
+      lastName
+      userName
+      email
+      bio
+      pokemon {
+        name
+        type
+        image
+      }
+      berry
+      heldItem
+    }
+  }`
 
 export const GET_ALL_PROFILES = gql`
   query getAllProfiles {
