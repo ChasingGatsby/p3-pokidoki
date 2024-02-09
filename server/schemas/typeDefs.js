@@ -17,7 +17,12 @@ type Users {
   _id: ID
   firstName: String
   lastName: String
-
+  username: String
+  email: String
+  bio: String
+  pokemon: Pokemon
+  berry: String
+  heldItem: String
 }
 
 type Profile {
@@ -26,6 +31,10 @@ type Profile {
   lastName: String
   username: String
   email: String
+  bio: String
+  pokemon: [Pokemon]
+  berry: String
+  heldItem: String
 }
 
 type Auth {
@@ -36,8 +45,8 @@ type Auth {
 type Query {
   getProfile: Profile
   getAllProfiles: [Users]
-  getProfilesByPokemon: Profile
-  getProfilesByType: Profile
+  getProfilesByPokemon(name: String): [Users]
+  getProfilesByType(type: String): Profile
 }
 
 type Mutation {
