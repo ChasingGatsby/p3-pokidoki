@@ -7,11 +7,11 @@
     "password": "password1",
     "bio": "I suuck at this game...",
     "pokemon": {
-      "name": "Orbeetle",
-      "type": ["Bug", "Psychic"],
+      "name": "orbeetle",
+      "type": ["bug", "psychic"],
       "image": "https://img.pokemondb.net/artwork/large/orbeetle.jpg"
     },
-    "berry": "Cheri",
+    "berry": "cheri",
     "heldItem": "Leftovers"
   },
   {
@@ -22,11 +22,116 @@
     "password": "password2",
     "bio": "I suuck at this game too...",
     "pokemon": {
-      "name": "Kingler",
-      "type": ["Water"],
+      "name": "kingler",
+      "type": ["water"],
       "image": "https://img.pokemondb.net/artwork/large/kingler.jpg"
     },
-    "berry": "Chesto",
+    "berry": "chesto",
     "heldItem": "Mystic Water"
+  },
+  {
+    "firstName": "Jackson",
+    "lastName": "Ward",
+    "username": "Got7",
+    "email": "getaway@fromus.com",
+    "password": "password3",
+    "bio": "I suuck at this game more...",
+    "pokemon": {
+      "name": "jynx",
+      "type": ["ice", "psychic"],
+      "image": "https://img.pokemondb.net/artwork/large/jynx.jpg"
+    },
+    "berry": "yache",
+    "heldItem": "Nevermeltice"
+  },
+  {
+    "firstName": "Cameron",
+    "lastName": "Jonas",
+    "username": "Kingmaker",
+    "email": "getaway@fromall.com",
+    "password": "password4",
+    "bio": "I don't suck at this game!",
+    "pokemon": {
+      "name": "nidoking",
+      "type": ["poison", "ground"],
+      "image": "https://img.pokemondb.net/artwork/large/nidoking.jpg"
+    },
+    "berry": "pecha",
+    "heldItem": "Poison Barb"
+  },
+  {
+    "firstName": "Lillian",
+    "lastName": "Emmett",
+    "username": "Roze",
+    "email": "getaway@fromher.com",
+    "password": "password5",
+    "bio": "I almost suck at this game...",
+    "pokemon": {
+      "name": "ponyta",
+      "type": ["fire"],
+      "image": "https://img.pokemondb.net/artwork/large/ponyta.jpg"
+    },
+    "berry": "rawst",
+    "heldItem": "Charcoal"
+  },
+  {
+    "firstName": "Johnny",
+    "lastName": "Storm",
+    "username": "HumanTorch",
+    "email": "getaway@fromdad.com",
+    "password": "password6",
+    "bio": "Flame off!",
+    "pokemon": {
+      "name": "magmar",
+      "type": ["fire"],
+      "image": "https://img.pokemondb.net/artwork/large/magmar.jpg"
+    },
+    "berry": "coban",
+    "heldItem": "Charcoal"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Howlett",
+    "username": "NotWolverine",
+    "email": "getaway@frombub.com",
+    "password": "password7",
+    "bio": "I'm not Wolverine!",
+    "pokemon": {
+      "name": "sandslash",
+      "type": ["ground"],
+      "image": "https://img.pokemondb.net/artwork/large/sandslash.jpg"
+    },
+    "berry": "grepa",
+    "heldItem": "Soft Sand"
+  },
+  {
+    "firstName": "Jon",
+    "lastName": "Jafari",
+    "username": "JonTron",
+    "email": "getaway@fromegh.com",
+    "password": "password8",
+    "bio": "Egh!",
+    "pokemon": {
+      "name": "pidgeotto",
+      "type": ["normal", "flying"],
+      "image": "https://img.pokemondb.net/artwork/large/pidgeotto.jpg"
+    },
+    "berry": "charti",
+    "heldItem": "Sharp Beak"
+  },
+  {
+    "firstName": "Josh",
+    "lastName": "Willis",
+    "username": "RiftJumper",
+    "email": "getaway@fromyourpast.com",
+    "password": "password9",
+    "bio": "Let go of the past!",
+    "pokemon": {
+      "name": "gyarados",
+      "type": ["water", "flying"],
+      "image": "https://img.pokemondb.net/artwork/large/gyarados.jpg"
+    },
+    "berry": "wacan",
+    "heldItem": "Life Orb"
   }
 ]
