@@ -9,8 +9,14 @@ const resolvers = {
     },
     getProfile: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return await User.findOne({ _id: context.user._id });
       }
+    },
+    getProfilesByPokemon: async (parent, { pokemon }) => {
+      return await User.find({ pokemon });
+    },
+    getProfilesByType: async (parent, { type }) => {
+      return await User.find({ type: { $in: [type] } });
     },
   },
 
@@ -21,8 +27,8 @@ const resolvers = {
       return { token, user };
     },
 
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
         throw AuthenticationError;
