@@ -51,12 +51,17 @@ export default function Search() {
   };
 
   const handlePokemonSearch = () => {
-    getProfilesByPokemon({ variables: { pokemonName: selectedItem } });
+    getProfilesByPokemon({ variables: { name: selectedItem } }).then((res) =>
+      console.log(res)
+    );
     setActiveQuery("pokemon");
   };
 
   const handleTypeSearch = () => {
-    getProfilesByType({ variables: { type: selectedType } });
+    getProfilesByType({ variables: { type: selectedType } }).then((res) =>
+      console.log(res)
+    );
+    console.log({ variables: { type: selectedType } });
     setActiveQuery("type");
   };
 
@@ -128,15 +133,18 @@ export default function Search() {
         </div>
       </div>
       <div className="container">
-        {loading && <p>Loading...</p>}
-        {error && <p>Error : {error.message}</p>}
-        {loadingType && <p>Loading...</p>}
-        {errorType && <p>Error : {errorType.message}</p>}
+        {activeQuery === "type" && loading && <p>Loading...</p>}
+        {activeQuery === "type" && error && <p>Error : {error.message}</p>}
+        {activeQuery === "type" && loadingType && <p>Loading...</p>}
+        {activeQuery === "type" && errorType && (
+          <p>Error : {errorType.message}</p>
+        )}
         {activeQuery === "pokemon" &&
           data &&
           data.getProfilesByPokemon.length > 0 &&
           data.getProfilesByPokemon.map((profile) => (
             <SearchResult
+              key={profile._id}
               id={profile._id}
               name={profile.firstName}
               pokemon={profile.pokemon.name}
@@ -148,6 +156,7 @@ export default function Search() {
           dataType.getProfilesByType.length > 0 &&
           dataType.getProfilesByType.map((profile) => (
             <SearchResult
+              key={profile._id}
               id={profile._id}
               name={profile.firstName}
               pokemon={profile.pokemon.name}

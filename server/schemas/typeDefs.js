@@ -45,8 +45,8 @@ type Auth {
 type Query {
   getProfile: Profile
   getAllProfiles: [Users]
-  getProfilesByPokemon(name: String): [Users]
-  getProfilesByType(type: String): Profile
+  getProfilesByPokemon(name: String!): [Users]
+  getProfilesByType(type: String!): [Users]
 }
 
 type Mutation {
