@@ -1,5 +1,5 @@
 import Auth from "../utils/auth";
-import { GET_PROFILE } from "../utils/queries";
+import { GET_OWN_PROFILE } from "../utils/queries";
 
 const Home = () => {
   if (!Auth.loggedIn()) {
@@ -15,7 +15,7 @@ const Home = () => {
       </div>
     );
   }
-  const { userName } = Auth.getProfile();
+  const { userName } = Auth.getOwnProfile();
   return (
     <main>
       {" "}

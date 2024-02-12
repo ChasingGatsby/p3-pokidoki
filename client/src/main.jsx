@@ -13,6 +13,8 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Matches from "./pages/Matches";
+import OtherProfile from "./pages/OtherProfile";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +39,7 @@ const router = createBrowserRouter([
       { path: "/profile", element: <Profile /> },
       { path: "/settings", element: <Settings /> },
       { path: "/matches", element: <Matches /> },
+      { path: "/profile/:id", element: <OtherProfile />}
     ],
   },
 ]);
