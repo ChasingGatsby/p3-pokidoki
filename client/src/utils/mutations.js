@@ -27,7 +27,40 @@ export const LOGIN_USER = gql`
   }
 `;
 // edit user info
-// export const EDIT_USER = gql``;
+export const EDIT_USER = gql`
+  mutation editUser(
+    $firstName: String!
+    $lastName: String!
+    $pokemon: String!
+    $heldItem: String!
+    $berry: String!
+    $bio: String!
+  ) {
+    editUser(
+      firstName: $firstName
+      lastName: $lastName
+      pokemon: $pokemon
+      heldItem: $heldItem
+      berry: $berry
+      bio: $bio
+    ) {
+      token
+      user {
+        username
+        _id
+        firstName
+        lastName
+        pokemon {
+          name
+          type
+        }
+        heldItem
+        berry
+        bio
+      }
+    }
+  }
+`;
 // // add a match to matches array?
 // export const ADD_MATCH = gql``;
 // // delete match from matches array

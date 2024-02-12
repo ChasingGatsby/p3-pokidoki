@@ -1,6 +1,8 @@
 // need to add everything we need for our user typedef
 
 const typeDefs = `
+
+
 type Pokemon {
   name: String
   type: [String]
@@ -32,7 +34,7 @@ type Profile {
   username: String
   email: String
   bio: String
-  pokemon: [Pokemon]
+  pokemon: Pokemon
   berry: String
   heldItem: String
 }
@@ -52,6 +54,7 @@ type Query {
 type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
+  editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 
 }
 `;
 
