@@ -1,7 +1,11 @@
+import { useQuery, useReadQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import { GET_PROFILE } from "../utils/queries";
 
 const Home = () => {
+  const { loading, error, data } = useQuery(GET_PROFILE);
+  if (loading) return <p>loading</p>;
+  if (error) return <p>Error </p>;
   if (!Auth.loggedIn()) {
     return (
       <div>
@@ -15,13 +19,13 @@ const Home = () => {
       </div>
     );
   }
-  const { userName } = Auth.getProfile();
+  const userEmail = data.getProfile.firstName;
   return (
     <main>
       {" "}
       <div>Just placeholder text </div>{" "}
       <div>
-        <p>Welcome, {userName}!</p>
+        <p>Welcome, {userEmail}!</p>
       </div>
     </main>
   );
