@@ -61,6 +61,10 @@ const userSchema = new Schema({
   },
   sentMessages: [messageSchema],
   receivedMessages: [messageSchema],
+  profilePic: {
+    type: String,
+    default: "/default-profile-pic.jpg",
+  },
 });
 
 userSchema.pre("save", async function (next) {

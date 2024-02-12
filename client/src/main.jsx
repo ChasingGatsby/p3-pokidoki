@@ -10,7 +10,9 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Matches from "./pages/Matches";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +33,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       { path: "/signup", element: <Signup /> },
-      { parth: "/login", element: <Login /> },
+      { path: "/login", element: <Login /> },
+      { path: "/profile", element: <Profile /> },
+      { path: "/settings", element: <Settings /> },
+      { path: "/matches", element: <Matches /> },
     ],
   },
 ]);

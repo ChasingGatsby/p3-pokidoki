@@ -28,7 +28,10 @@ const NavBar = () => {
             <a href="/search">Browse</a>
           </li>
           <li>
-            <a href="#">Matches</a>
+            <a href="/matches">Matches</a>
+          </li>
+          <li>
+            <a href="/logout">Logout</a>
           </li>
         </ul>
       </nav>

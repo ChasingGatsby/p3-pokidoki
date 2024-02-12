@@ -30,8 +30,8 @@ const resolvers = {
       return { token, user };
     },
 
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw AuthenticationError;
@@ -46,6 +46,42 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    editUser: async (
+      parent,
+      { firstName, lastName, pokemon, heldItem, berry, bio },
+      context
+    ) => {
+      // Find the user by _id
+      const user = await User.findById({ _id: context.user._id });
+      console.log(`this is context.user.......`, context.user);
+      console.log(`this is the user`, user);
+      // Check if the user exists
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      // Update the user with the new information
+      user.firstName = firstName;
+      user.lastName = lastName;
+      user.pokemon = pokemon;
+      user.heldItem = heldItem;
+      user.berry = berry;
+      user.bio = bio;
+
+      // If a profile picture was uploaded, save it to the user's profile
+      // if (profilePic) {
+      //   user.profilePic = profilePic;
+      // }
+
+      // Save the updated user to the database
+      const updatedUser = await user.save();
+
+      // Return the updated user and a new token
+      return {
+        token: signToken(user),
+        user: updatedUser,
+      };
     },
   },
 };
