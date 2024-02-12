@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_PROFILE = gql`
-  query getProfile($id: ID!) {
-    getProfile(_id: $id) {
+  query getProfile {
+    getProfile {
       _id
       firstName
       lastName
@@ -17,7 +17,7 @@ export const GET_PROFILE = gql`
       berry
       heldItem
       matches {
-        name
+        firstName
         image
       }
     }

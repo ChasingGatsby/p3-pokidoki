@@ -31,12 +31,13 @@ type Profile {
   _id: ID
   firstName: String
   lastName: String
-  username: String
+  userName: String
   email: String
   bio: String
   pokemon: Pokemon
   berry: String
   heldItem: String
+  matches: Match
 }
 
 type Auth {
