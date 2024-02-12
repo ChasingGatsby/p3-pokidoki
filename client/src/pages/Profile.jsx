@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { EDIT_USER } from "../utils/mutations";
 import { GET_OWN_PROFILE } from "../utils/queries";
+import { useLazyQuery } from "@apollo/client";
 
 import Auth from "../utils/auth";
 
@@ -33,7 +34,7 @@ const Profile = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    console.log();
+    
     try {
       const { data } = await editUser({
         variables: { ...formState },

@@ -58,7 +58,7 @@ const resolvers = {
       // Find the user by _id
       const user = await User.findById({ _id: context.user._id });
       console.log(`this is context.user.......`, context.user);
-      console.log(`this is the user`, user);
+
       // Check if the user exists
       if (!user) {
         throw new Error("User not found");
@@ -67,7 +67,7 @@ const resolvers = {
       // Update the user with the new information
       user.firstName = firstName;
       user.lastName = lastName;
-      user.pokemon = pokemon;
+      user.pokemon.name = pokemon;
       user.heldItem = heldItem;
       user.berry = berry;
       user.bio = bio;
@@ -79,7 +79,7 @@ const resolvers = {
 
       // Save the updated user to the database
       const updatedUser = await user.save();
-
+      console.log(`this is the user`, user);
       // Return the updated user and a new token
       return {
         token: signToken(user),

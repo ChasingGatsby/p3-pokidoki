@@ -46,7 +46,7 @@ export const EDIT_USER = gql`
     ) {
       token
       user {
-        username
+        userName
         _id
         firstName
         lastName
