@@ -1,12 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const GET_PROFILE = gql`
-  query getProfile {
-    getProfile {
+export const GET_OWN_PROFILE = gql`
+  query getOwnProfile($id: ID!) {
+    getOwnProfile(_id: $id) {
       _id
       firstName
       lastName
-      userName
+      username
       email
       bio
       pokemon {
@@ -18,6 +18,32 @@ export const GET_PROFILE = gql`
       heldItem
       matches {
         firstName
+        lastName
+        image
+      }
+    }
+  }
+`;
+
+export const GET_OTHER_PROFILE = gql`
+  query getOtherProfile($id: ID!) {
+    getOtherProfile(_id: $id) {
+      _id
+      firstName
+      lastName
+      username
+      email
+      bio
+      pokemon {
+        name
+        type
+        image
+      }
+      berry
+      heldItem
+      matches {
+        firstName
+        lastName
         image
       }
     }
@@ -70,7 +96,7 @@ export const GET_ALL_PROFILES = gql`
       _id
       firstName
       lastName
-      userName
+      username
       email
       bio
       pokemon {

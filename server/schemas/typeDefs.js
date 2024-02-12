@@ -15,6 +15,13 @@ type Match {
   image: String
 }
 
+type Message {
+  from: String
+  to: String
+  text: String
+  date: String
+}
+
 type Users {
   _id: ID
   firstName: String
@@ -37,7 +44,8 @@ type Profile {
   pokemon: Pokemon
   berry: String
   heldItem: String
-  matches: Match
+  matches: [Match]
+
 }
 
 type Auth {
@@ -46,7 +54,8 @@ type Auth {
 }
 
 type Query {
-  getProfile: Profile
+  getOwnProfile: Profile
+  getOtherProfile(_id: ID!): Profile
   getAllProfiles: [Users]
   getProfilesByPokemon(name: String!): [Users]
   getProfilesByType(type: String!): [Users]
@@ -56,6 +65,7 @@ type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 
+  sendMessage(to: String!, text: String!): Message
 }
 `;
 

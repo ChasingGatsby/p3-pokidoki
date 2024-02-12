@@ -95,7 +95,6 @@ export default function Search() {
               alt={selectedItem}
             />
           )}
-          {/* Add this line to display the selected item */}
           <button
             type="button"
             className="btn btn-danger"
@@ -133,8 +132,8 @@ export default function Search() {
         </div>
       </div>
       <div className="container">
-        {activeQuery === "type" && loading && <p>Loading...</p>}
-        {activeQuery === "type" && error && <p>Error : {error.message}</p>}
+        {activeQuery === "pokemon" && loading && <p>Loading...</p>}
+        {activeQuery === "pokemon" && error && <p>Error : {error.message}</p>}
         {activeQuery === "type" && loadingType && <p>Loading...</p>}
         {activeQuery === "type" && errorType && (
           <p>Error : {errorType.message}</p>

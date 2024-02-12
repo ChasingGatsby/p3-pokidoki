@@ -1,6 +1,6 @@
 import { useQuery, useReadQuery } from "@apollo/client";
 import Auth from "../utils/auth";
-import { GET_PROFILE } from "../utils/queries";
+import { GET_OWN_PROFILE } from "../utils/queries";
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_PROFILE);

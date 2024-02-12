@@ -7,10 +7,13 @@ const resolvers = {
     getAllProfiles: async () => {
       return await User.find({});
     },
-    getProfile: async (parent, args, context) => {
+    getOwnProfile: async (parent, args, context) => {
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
+    },
+    getOtherProfile: async (_, { _id }, context) => {
+      return await User.findById(_id);
     },
     getProfilesByPokemon: async (parent, { name }) => {
       const results = await User.find({ "pokemon.name": name });
