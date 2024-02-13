@@ -38,7 +38,7 @@ type Profile {
   _id: ID
   firstName: String
   lastName: String
-  userName: String
+  username: String
   email: String
   bio: String
   pokemon: Pokemon

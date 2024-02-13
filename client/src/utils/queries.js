@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_OWN_PROFILE = gql`
-  query getOwnProfile($id: ID!) {
-    getOwnProfile(_id: $id) {
+  query getOwnProfile {
+    getOwnProfile {
       _id
       firstName
       lastName

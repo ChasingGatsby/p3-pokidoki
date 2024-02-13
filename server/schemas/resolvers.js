@@ -9,7 +9,9 @@ const resolvers = {
     },
     getOwnProfile: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id });
+        return await User.findById({ _id: context.user._id });
+        
+        
       }
     },
     getOtherProfile: async (_, { _id }, context) => {

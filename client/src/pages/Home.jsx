@@ -3,7 +3,7 @@ import Auth from "../utils/auth";
 import { GET_OWN_PROFILE } from "../utils/queries";
 
 const Home = () => {
-  const { loading, error, data } = useQuery(GET_PROFILE);
+  const { loading, error, data } = useQuery(GET_OWN_PROFILE);
   if (loading) return <p>loading</p>;
   if (error) return <p>Error </p>;
   if (!Auth.loggedIn()) {
@@ -19,7 +19,7 @@ const Home = () => {
       </div>
     );
   }
-  const userEmail = data.getProfile.firstName;
+  const userEmail = data.getOwnProfile.username;
   return (
     <main>
       {" "}
