@@ -8,7 +8,7 @@ const NavBar = () => {
 
   if (!Auth.loggedIn()) {
     return (
-      <header>
+      <header style={{ backgroundColor: "#ff0000", borderBottom: "solid 1px black" }}>
         <a href="/">
           <img className="logo" src={logo} alt="PokiDoki" />
         </a>
@@ -47,7 +47,7 @@ const NavBar = () => {
     );
   }
   return (
-    <header>
+    <header style={{ backgroundColor: "#ff0000", borderBottom: "solid 1px black" }}>
       <a href="/">
         <img className="logo" src={logo} alt="PokiDoki" />
       </a>

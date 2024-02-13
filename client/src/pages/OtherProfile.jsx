@@ -38,11 +38,22 @@ function OtherProfile() {
 
   return (
     <div className="container">
-      <h1>Other Profile</h1>
-      <button onClick={handleAddMatch}>Add Match</button>
-      <p>ID: {data.getOtherProfile._id}</p>
-      <p>Username: {data.getOtherProfile.username}</p>
-      <p>Email: {data.getOtherProfile.email}</p>
+      <div className="card mb-2">
+        <div className="card-body">
+          <h1 className="card-title">
+            {data.getOtherProfile.firstName} {data.getOtherProfile.lastName}
+          </h1>
+          <img
+            src={data.getOtherProfile.pokemon.image}
+            className="card-img-top"
+            alt={data.getOtherProfile.pokemon.name}
+            style={{ width: "50%", height: "200px", objectFit: "cover" }}
+          />
+          <h4>Bio:</h4>
+          <p className="card-text">{data.getOtherProfile.bio}</p>
+          <button onClick={handleAddMatch}>Add Match</button>
+        </div>
+      </div>
       <div className="container">
         <MessageForm
           to={data.getOtherProfile.username}
