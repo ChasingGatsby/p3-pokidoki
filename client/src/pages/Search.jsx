@@ -67,7 +67,6 @@ export default function Search() {
     setActiveQuery("type");
   };
 
-
   if (!Auth.loggedIn()) {
     return (
       <div>
@@ -75,17 +74,17 @@ export default function Search() {
         <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link>
       </div>
     );
-  } 
+  }
 
   return (
     <div className="container m-5">
       <div className="row">
         <div className="col">
-          <form>
-            <div className="form-group my-3">
-              <label htmlFor="dropdown">Search for a Pokemon!</label>
+          <form className="form-inline">
+            <label htmlFor="dropdown">Search for a Pokemon!</label>
+            <div className="form-group my-3 d-flex align-items-center">
               <select
-                className="form-control"
+                className="form-control mx-2"
                 id="pokemondropdown"
                 style={{ width: "50%" }}
                 onChange={handleChange}
@@ -96,6 +95,13 @@ export default function Search() {
                   </option>
                 ))}
               </select>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handlePokemonSearch}
+              >
+                Search
+              </button>
             </div>
           </form>
 
@@ -107,21 +113,16 @@ export default function Search() {
               alt={selectedItem}
             />
           )}
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={handlePokemonSearch}
-          >
-            Search
-          </button>
         </div>
 
         <div className="col">
-          <form>
-            <div className="form-group my-3">
-              <label htmlFor="dropdown">Search for a Type!</label>
+          <form className="form-inline">
+            <label htmlFor="dropdown" className="mr-2">
+              Search for a Type!
+            </label>
+            <div className="form-group d-flex align=items-center my-3">
               <select
-                className="form-control"
+                className="form-control mx-2"
                 id="typedropdown"
                 style={{ width: "50%" }}
                 onChange={handleTypeChange}
@@ -132,18 +133,18 @@ export default function Search() {
                   </option>
                 ))}
               </select>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleTypeSearch}
+              >
+                Search
+              </button>
             </div>
           </form>
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={handleTypeSearch}
-          >
-            Search
-          </button>
         </div>
       </div>
-      <div className="container">
+      <div className="container mt-5">
         {activeQuery === "pokemon" && loading && <p>Loading...</p>}
         {activeQuery === "pokemon" && error && <p>Error : {error.message}</p>}
         {activeQuery === "type" && loadingType && <p>Loading...</p>}
@@ -151,29 +152,43 @@ export default function Search() {
           <p>Error : {errorType.message}</p>
         )}
         {activeQuery === "pokemon" &&
-          data &&
-          data.getProfilesByPokemon.length > 0 &&
-          data.getProfilesByPokemon.map((profile) => (
-            <SearchResult
-              key={profile._id}
-              id={profile._id}
-              name={profile.firstName}
-              pokemon={profile.pokemon.name}
-              image={profile.pokemon.image}
-            />
-          ))}
+          !loading &&
+          !error &&
+          data.getProfilesByPokemon.length === 0 && <label>No results found</label>}
         {activeQuery === "type" &&
-          dataType &&
-          dataType.getProfilesByType.length > 0 &&
-          dataType.getProfilesByType.map((profile) => (
-            <SearchResult
-              key={profile._id}
-              id={profile._id}
-              name={profile.firstName}
-              pokemon={profile.pokemon.name}
-              image={profile.pokemon.image}
-            />
-          ))}
+          !loadingType &&
+          !errorType &&
+          dataType.getProfilesByType.length === 0 && <label>No results found</label>}
+        <div className="row">
+          {activeQuery === "pokemon" &&
+            data &&
+            data.getProfilesByPokemon.length > 0 &&
+            data.getProfilesByPokemon.map((profile) => (
+              <div className="col-md-4">
+                <SearchResult
+                  key={profile._id}
+                  id={profile._id}
+                  name={profile.firstName}
+                  pokemon={profile.pokemon.name}
+                  image={profile.pokemon.image}
+                />
+              </div>
+            ))}
+          {activeQuery === "type" &&
+            dataType &&
+            dataType.getProfilesByType.length > 0 &&
+            dataType.getProfilesByType.map((profile) => (
+              <div className="col-md-4">
+                <SearchResult
+                  key={profile._id}
+                  id={profile._id}
+                  name={profile.firstName}
+                  pokemon={profile.pokemon.name}
+                  image={profile.pokemon.image}
+                />
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );

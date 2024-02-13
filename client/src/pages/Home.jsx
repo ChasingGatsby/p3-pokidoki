@@ -21,7 +21,7 @@ const Home = () => {
   } else {
     const userEmail = data.getOwnProfile && data.getOwnProfile.userName;
     return (
-      <main>
+      <main className="col-9">
         {" "}
         <div>Just placeholder text </div>{" "}
         <div>

@@ -9,8 +9,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Navbar from "./components/NavBar";
+import SidebarProfile from "./components/SidebarProfile";
 // import Footer from "./components/Footer";
-
 
 const httpLink = createHttpLink({ uri: "/graphql" });
 
@@ -33,11 +33,17 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const isLoggedIn = !!localStorage.getItem("id_token");
+
   return (
     <ApolloProvider client={client}>
-     
       <Navbar />
-      <Outlet />
+      <div className="row">
+        {isLoggedIn && <SidebarProfile />}
+        <div className={isLoggedIn ? "col-9" : "col-12"}>
+          <Outlet />
+        </div>
+      </div>
       {/* <Footer /> */}
     </ApolloProvider>
   );
