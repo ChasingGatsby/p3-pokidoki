@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { EDIT_USER } from "../utils/mutations";
@@ -18,6 +18,20 @@ const Profile = (props) => {
     bio: "",
     profilePic: "",
   });
+  const { data: profileData, loading } = useQuery(GET_OWN_PROFILE);
+  useEffect(() => {
+    if (!loading && profileData) {
+      setFormState({
+        firstName: profileData.getOwnProfile.firstName,
+        lastName: profileData.getOwnProfile.lastName,
+        pokemon: profileData.getOwnProfile.pokemon.name,
+        heldItem: profileData.getOwnProfile.heldItem,
+        berry: profileData.getOwnProfile.berry,
+        bio: profileData.getOwnProfile.bio,
+        profilePic: profileData.getOwnProfile.profilePic,
+      });
+    }
+  }, [loading, profileData]);
   const [editUser, { error, data }] = useMutation(EDIT_USER);
 
   // update state based on form input changes
@@ -34,26 +48,24 @@ const Profile = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    
+
     try {
       const { data } = await editUser({
         variables: { ...formState },
       });
-
-      Auth.editUser(data.editUser.token);
     } catch (e) {
       console.error(e);
     }
 
     // clear form values
     setFormState({
-      firstName: "",
-      lastName: "",
-      pokemon: "",
-      heldItem: "",
-      berry: "",
-      bio: "",
-      profilePic: null,
+      firstName: profileData.getOwnProfile.firstName,
+      lastName: profileData.getOwnProfile.lastName,
+      pokemon: profileData.getOwnProfile.pokemon.name,
+      heldItem: profileData.getOwnProfile.heldItem,
+      berry: profileData.getOwnProfile.berry,
+      bio: profileData.getOwnProfile.bio,
+      profilePic: profileData.getOwnProfile.profilePic,
     });
   };
 
