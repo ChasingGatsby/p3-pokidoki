@@ -57,17 +57,22 @@ const resolvers = {
     ) => {
       // Find the user by _id
       const user = await User.findById({ _id: context.user._id });
-      console.log(`this is context.user.......`, context.user);
 
       // Check if the user exists
       if (!user) {
         throw new Error("User not found");
       }
-
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+      );
+      const data = await response.json();
+      const typeData = data.types[0].type.name;
       // Update the user with the new information
       user.firstName = firstName;
       user.lastName = lastName;
       user.pokemon.name = pokemon;
+      user.pokemon.type = typeData;
+      user.pokemon.image = `https://img.pokemondb.net/artwork/large/${pokemon}.jpg`;
       user.heldItem = heldItem;
       user.berry = berry;
       user.bio = bio;
@@ -89,7 +94,7 @@ const resolvers = {
     sendMessage: async (_, { to, text }, context) => {
       // Check if the user is authenticated
       if (!context.user) {
-        throw new Error('You must be logged in to send a message.');
+        throw new Error("You must be logged in to send a message.");
       }
 
       // Create a new message

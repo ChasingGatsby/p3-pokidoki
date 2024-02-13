@@ -32,6 +32,22 @@ const Profile = (props) => {
       });
     }
   }, [loading, profileData]);
+
+  // pokemon stuff
+
+  const [pokemon, setPokemon] = useState([]);
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+      .then((response) => response.json())
+      .then((data) => setPokemon(data.results));
+  }, []);
+
+  function formatName(string) {
+    let formattedString = string.charAt(0).toUpperCase() + string.slice(1);
+    formattedString = formattedString.replace(/-/g, " ");
+    return formattedString;
+  }
+
   const [editUser, { error, data }] = useMutation(EDIT_USER);
 
   // update state based on form input changes
@@ -132,21 +148,21 @@ const Profile = (props) => {
                   onChange={handleChange}
                   style={{ display: "block", marginBottom: "1rem" }}
                 />
-                <label
-                  htmlFor="pokemon"
-                  style={{ display: "block", marginBottom: "1rem" }}
-                >
-                  Choose your Pokemon!
-                </label>
-                <input
-                  className="form-input"
-                  placeholder="Your Pokemon"
+                <label htmlFor="dropdown">Search for a Pokemon!</label>
+                <select
+                  className="form-control"
+                  id="pokemondropdown"
                   name="pokemon"
                   type="text"
-                  value={formState.pokemon}
+                  style={{ width: "50%" }}
                   onChange={handleChange}
-                  style={{ display: "block", marginBottom: "1rem" }}
-                />
+                >
+                  {pokemon.map((item, index) => (
+                    <option key={index} value={item.name}>
+                      {formatName(item.name)}
+                    </option>
+                  ))}
+                </select>
                 <label
                   htmlFor="heldItem"
                   style={{ display: "block", marginBottom: "1rem" }}
