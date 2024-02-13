@@ -10,10 +10,11 @@ type Pokemon {
 }
 
 type Match {
+_id: ID
 userName: String
 firstName: String
 lastName: String
-image: String
+
 }
 
 type Message {
@@ -55,6 +56,7 @@ type Auth {
 }
 
 type Query {
+  getMatches: Profile
   getOwnProfile: Profile
   getOtherProfile(_id: ID!): Profile
   getAllProfiles: [Users]
@@ -63,7 +65,7 @@ type Query {
 }
 
 type Mutation {
-  addMatch (userName: String): Profile
+  addMatch (userName: String, firstName: String): Profile
   addUser(userName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 

@@ -1,10 +1,42 @@
+import { useQuery, useReadQuery } from "@apollo/client";
+import Auth from "../utils/auth";
+import { GET_OWN_PROFILE } from "../utils/queries";
+import { GET_OTHER_PROFILE, GET_MATCHES } from "../utils/queries";
+import MatchCard from "../components/MatchCard";
 const Matches = () => {
-  return (
-    <main>
-      {" "}
-      <div>This will be matches. five or so displayed at a time</div>{" "}
-    </main>
-  );
+  const { loading, error, data } = useQuery(GET_MATCHES);
+  if (loading) return <p>loading</p>;
+  if (error) return <p>Error </p>;
+  if (!Auth.loggedIn()) {
+    return (
+      <div>
+        <p>You must be logged in to view this page.</p>
+        <li>
+          <a href="/signup">Signup</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+      </div>
+    );
+  } else {
+    const userData = data.getMatches;
+    const userMatches = data.getMatches.matches;
+    console.log(userMatches);
+    return (
+      <main className="col-9">
+        {" "}
+        <h2>My Matches: </h2>{" "}
+        <div>
+          <p>Welcome, {userData.firstName}!</p>
+          <div>
+            {userMatches.map((match) => (
+              <MatchCard name={match.firstName} />
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
 };
-
 export default Matches;

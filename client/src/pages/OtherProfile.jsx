@@ -19,7 +19,7 @@ function OtherProfile() {
     addMatch({
       variables: {
         userName: data.getOtherProfile.userName,
-        matchId: data.getOtherProfile._id,
+        firstName: data.getOtherProfile.firstName,
       },
     });
   };
