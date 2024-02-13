@@ -4,6 +4,8 @@ import {
   GET_PROFILES_BY_POKEMON,
   GET_PROFILES_BY_TYPE,
 } from "../utils/queries";
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 import SearchResult from "../components/SearchResult";
 
@@ -64,6 +66,16 @@ export default function Search() {
     console.log({ variables: { type: selectedType } });
     setActiveQuery("type");
   };
+
+
+  if (!Auth.loggedIn()) {
+    return (
+      <div>
+        <p>You must be logged in to view this page.</p>
+        <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link>
+      </div>
+    );
+  } 
 
   return (
     <div className="container m-5">
