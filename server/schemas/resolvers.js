@@ -1,5 +1,5 @@
 // need to add everything we need for our resolvers. our queries and mutations
-const { User } = require("../models");
+const { User, Message } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -87,6 +87,25 @@ const resolvers = {
         token: signToken(user),
         user: updatedUser,
       };
+    },
+    sendMessage: async (_, { to, text }, context) => {
+      // Check if the user is authenticated
+      if (!context.user) {
+        throw new Error('You must be logged in to send a message.');
+      }
+
+      // Create a new message
+      const message = new Message({
+        from: context.user._id,
+        to,
+        text,
+        date: new Date().toISOString(),
+      });
+
+      // Save the message to the database
+      const savedMessage = await message.save();
+
+      return savedMessage;
     },
   },
 };

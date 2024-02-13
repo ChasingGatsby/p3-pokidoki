@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const messageSchema = require("./Message");
 
 const userSchema = new Schema({
   firstName: {
@@ -59,8 +58,6 @@ const userSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: "User",
   },
-  sentMessages: [messageSchema],
-  receivedMessages: [messageSchema],
   profilePic: {
     type: String,
     default: "/default-profile-pic.jpg",
