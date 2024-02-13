@@ -27,6 +27,21 @@ const resolvers = {
   },
 
   Mutation: {
+    addMatch: async (parent, { userName }, context) => {
+      const newMatch = await User.findOne({ userName: userName });
+      console.log(newMatch);
+      const currentUser = context.user;
+      const updatedUser = await User.findByIdAndUpdate(
+        currentUser._id,
+        { $addToSet: { matches: newMatch._id } },
+        { new: true }
+      );
+      console.log("this is current", currentUser);
+      console.log("this is updated user", updatedUser);
+      return updatedUser;
+      // Check if the user exists
+    },
+
     addUser: async (parent, { userName, email, password }) => {
       const user = await User.create({ userName, email, password });
       const token = signToken(user);
@@ -112,7 +127,6 @@ const resolvers = {
     },
   },
 };
-
 module.exports = resolvers;
 
 // new comment for testing

@@ -25,6 +25,7 @@ const Profile = (props) => {
         firstName: profileData.getOwnProfile.firstName,
         lastName: profileData.getOwnProfile.lastName,
         pokemon: profileData.getOwnProfile.pokemon.name,
+        matches: profileData.getOwnProfile.matches,
         heldItem: profileData.getOwnProfile.heldItem,
         berry: profileData.getOwnProfile.berry,
         bio: profileData.getOwnProfile.bio,
@@ -77,6 +78,7 @@ const Profile = (props) => {
     setFormState({
       firstName: profileData.getOwnProfile.firstName,
       lastName: profileData.getOwnProfile.lastName,
+      matches: profileData.getOwnProfile.matches,
       pokemon: profileData.getOwnProfile.pokemon.name,
       heldItem: profileData.getOwnProfile.heldItem,
       berry: profileData.getOwnProfile.berry,

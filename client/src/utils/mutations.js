@@ -61,6 +61,15 @@ export const EDIT_USER = gql`
     }
   }
 `;
+export const ADD_MATCH = gql`
+  mutation addMatch($userName: String!) {
+    addMatch(userName: $userName) {
+      matches {
+        userName
+      }
+    }
+  }
+`;
 
 export const SEND_MESSAGE = gql`
   mutation SendMessage($to: ID!, $text: String!) {
