@@ -1,14 +1,27 @@
+import { useContext } from "react";
 import logo from "../images/logo.png";
 import Auth from "../utils/auth";
+import ThemeContext from "../utils/themeContext";
 
 const NavBar = () => {
   const handleLogout = () => {
     Auth.logout();
   };
 
+  const { theme } = useContext(ThemeContext);
+
+  const themeStyles = {
+    'Poke Ball': 'red',
+    'Great Ball': 'blue',
+    'Ultra Ball': 'orange',
+    'Master Ball': 'purple',
+  };
+
   if (!Auth.loggedIn()) {
     return (
-      <header style={{ backgroundColor: "#ff0000", borderBottom: "solid 1px black" }}>
+      <header
+        style={{ backgroundColor: themeStyles[theme], borderBottom: "solid 1px black" }}
+      >
         <a href="/">
           <img className="logo" src={logo} alt="PokiDoki" />
         </a>
@@ -47,7 +60,9 @@ const NavBar = () => {
     );
   }
   return (
-    <header style={{ backgroundColor: "#ff0000", borderBottom: "solid 1px black" }}>
+    <header
+      style={{ backgroundColor: themeStyles[theme], borderBottom: "solid 1px black" }}
+    >
       <a href="/">
         <img className="logo" src={logo} alt="PokiDoki" />
       </a>

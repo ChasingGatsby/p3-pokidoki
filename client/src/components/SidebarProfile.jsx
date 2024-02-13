@@ -19,6 +19,7 @@ const Sidebar = () => {
           <h5 className="card-title">
             {user.firstName} {user.lastName}
           </h5>
+          <h6>@{user.userName}</h6>
           <img
             src={user.pokemon.image}
             className="card-img-top my-2"
