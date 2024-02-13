@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_OTHER_PROFILE } from "../utils/queries";
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 import MessageForm from "../components/MessageForm";
 
@@ -10,7 +12,16 @@ function OtherProfile() {
     variables: { id: id },
   });
   console.log(id, data);
-  console.log()
+  console.log();
+
+  if (!Auth.loggedIn()) {
+    return (
+      <div>
+        <p>You must be logged in to view this page.</p>
+        <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link>
+      </div>
+    );
+  }
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error! {error.message} </div>;
@@ -22,7 +33,10 @@ function OtherProfile() {
       <p>Username: {data.getOtherProfile.username}</p>
       <p>Email: {data.getOtherProfile.email}</p>
       <div className="container">
-        <MessageForm to={data.getOtherProfile.username} toID={data.getOtherProfile._id}  />
+        <MessageForm
+          to={data.getOtherProfile.username}
+          toID={data.getOtherProfile._id}
+        />
       </div>
     </div>
   );
