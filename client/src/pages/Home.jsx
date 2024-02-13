@@ -18,17 +18,17 @@ const Home = () => {
         </li>
       </div>
     );
+  } else {
+    const userEmail = data.getOwnProfile && data.getOwnProfile.userName;
+    return (
+      <main>
+        {" "}
+        <div>Just placeholder text </div>{" "}
+        <div>
+          <p>Welcome, {userEmail}!</p>
+        </div>
+      </main>
+    );
   }
-  const userEmail = data.getOwnProfile.username;
-  return (
-    <main>
-      {" "}
-      <div>Just placeholder text </div>{" "}
-      <div>
-        <p>Welcome, {userEmail}!</p>
-      </div>
-    </main>
-  );
 };
-
 export default Home;
