@@ -16,8 +16,8 @@ type Match {
 }
 
 type Message {
-  from: String
-  to: String
+  from: ID!
+  to: ID!
   text: String
   date: String
 }
@@ -65,7 +65,7 @@ type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 
-  sendMessage(to: String!, text: String!): Message
+  sendMessage(to: ID!, text: String!): Message
 }
 `;
 

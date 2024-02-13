@@ -61,6 +61,17 @@ export const EDIT_USER = gql`
     }
   }
 `;
+
+export const SEND_MESSAGE = gql`
+  mutation SendMessage($to: ID!, $text: String!) {
+    sendMessage(to: $to, text: $text) {
+      from
+      to
+      text
+      date
+    }
+  }
+`;
 // // add a match to matches array?
 // export const ADD_MATCH = gql``;
 // // delete match from matches array
