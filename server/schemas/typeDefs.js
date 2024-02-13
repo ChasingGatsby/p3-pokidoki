@@ -26,7 +26,7 @@ type Users {
   _id: ID
   firstName: String
   lastName: String
-  username: String
+  userName: String
   email: String
   bio: String
   pokemon: Pokemon
@@ -38,7 +38,7 @@ type Profile {
   _id: ID
   firstName: String
   lastName: String
-  username: String
+  userName: String
   email: String
   bio: String
   pokemon: Pokemon
@@ -62,7 +62,7 @@ type Query {
 }
 
 type Mutation {
-  addUser(username: String!, email: String!, password: String!): Auth
+  addUser(userName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 
   sendMessage(to: String!, text: String!): Message

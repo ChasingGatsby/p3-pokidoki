@@ -10,8 +10,6 @@ const resolvers = {
     getOwnProfile: async (parent, args, context) => {
       if (context.user) {
         return await User.findById({ _id: context.user._id });
-        
-        
       }
     },
     getOtherProfile: async (_, { _id }, context) => {
@@ -29,8 +27,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { userName, email, password }) => {
+      const user = await User.create({ userName, email, password });
       const token = signToken(user);
       return { token, user };
     },

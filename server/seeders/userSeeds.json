@@ -2,7 +2,7 @@
   {
     "firstName": "J",
     "lastName": "Cabaluna",
-    "username": "Gatsbeau",
+    "userName": "Gatsbeau",
     "email": "getaway@fromme.com",
     "password": "password1",
     "bio": "I suuck at this game...",
@@ -17,7 +17,7 @@
   {
     "firstName": "Carlos",
     "lastName": "Espinol",
-    "username": "Crabby",
+    "userName": "Crabby",
     "email": "getaway@fromyou.com",
     "password": "password2",
     "bio": "I suuck at this game too...",
@@ -32,7 +32,7 @@
   {
     "firstName": "Jackson",
     "lastName": "Ward",
-    "username": "Got7",
+    "userName": "Got7",
     "email": "getaway@fromus.com",
     "password": "password3",
     "bio": "I suuck at this game more...",
@@ -47,7 +47,7 @@
   {
     "firstName": "Cameron",
     "lastName": "Jonas",
-    "username": "Kingmaker",
+    "userName": "Kingmaker",
     "email": "getaway@fromall.com",
     "password": "password4",
     "bio": "I don't suck at this game!",
@@ -62,7 +62,7 @@
   {
     "firstName": "Lillian",
     "lastName": "Emmett",
-    "username": "Roze",
+    "userName": "Roze",
     "email": "getaway@fromher.com",
     "password": "password5",
     "bio": "I almost suck at this game...",
@@ -77,7 +77,7 @@
   {
     "firstName": "Johnny",
     "lastName": "Storm",
-    "username": "HumanTorch",
+    "userName": "HumanTorch",
     "email": "getaway@fromdad.com",
     "password": "password6",
     "bio": "Flame off!",
@@ -92,7 +92,7 @@
   {
     "firstName": "James",
     "lastName": "Howlett",
-    "username": "NotWolverine",
+    "userName": "NotWolverine",
     "email": "getaway@frombub.com",
     "password": "password7",
     "bio": "I'm not Wolverine!",
@@ -107,7 +107,7 @@
   {
     "firstName": "Jon",
     "lastName": "Jafari",
-    "username": "JonTron",
+    "userName": "JonTron",
     "email": "getaway@fromegh.com",
     "password": "password8",
     "bio": "Egh!",
@@ -122,7 +122,7 @@
   {
     "firstName": "Josh",
     "lastName": "Willis",
-    "username": "RiftJumper",
+    "userName": "RiftJumper",
     "email": "getaway@fromyourpast.com",
     "password": "password9",
     "bio": "Let go of the past!",

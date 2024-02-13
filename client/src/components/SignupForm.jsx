@@ -6,7 +6,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
-    username: "",
+    userName: "",
     email: "",
     password: "",
   });
@@ -43,7 +43,7 @@ const SignupForm = () => {
     }
 
     setUserFormData({
-      username: "",
+      userName: "",
       email: "",
       password: "",
     });
@@ -62,13 +62,13 @@ const SignupForm = () => {
         </Alert>
 
         <Form.Group>
-          <Form.Label htmlFor="username">Username</Form.Label>
+          <Form.Label htmlFor="userName">Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Your username"
-            name="username"
+            name="userName"
             onChange={handleInputChange}
-            value={userFormData.username}
+            value={userFormData.userName}
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -108,7 +108,7 @@ const SignupForm = () => {
         <Button
           disabled={
             !(
-              userFormData.username &&
+              userFormData.userName &&
               userFormData.email &&
               userFormData.password
             )

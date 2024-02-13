@@ -6,7 +6,7 @@ export const GET_OWN_PROFILE = gql`
       _id
       firstName
       lastName
-      username
+      userName
       email
       bio
       pokemon {
@@ -31,7 +31,7 @@ export const GET_OTHER_PROFILE = gql`
       _id
       firstName
       lastName
-      username
+      userName
       email
       bio
       pokemon {
@@ -56,7 +56,7 @@ export const GET_PROFILES_BY_POKEMON = gql`
       _id
       firstName
       lastName
-      username
+      userName
       email
       bio
       pokemon {
@@ -76,7 +76,7 @@ export const GET_PROFILES_BY_TYPE = gql`
       _id
       firstName
       lastName
-      username
+      userName
       email
       bio
       pokemon {
@@ -96,7 +96,7 @@ export const GET_ALL_PROFILES = gql`
       _id
       firstName
       lastName
-      username
+      userName
       email
       bio
       pokemon {
