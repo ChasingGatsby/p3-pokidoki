@@ -24,6 +24,13 @@ const resolvers = {
       console.log(results);
       return results;
     },
+    getMatches: async (parent, args, context) => {
+      const currentUser = context.user;
+      const populatedUser = await User.findById(currentUser._id).populate(
+        "matches"
+      );
+      return populatedUser;
+    },
   },
 
   Mutation: {
@@ -36,6 +43,7 @@ const resolvers = {
         { $addToSet: { matches: newMatch._id } },
         { new: true }
       );
+
       console.log("this is current", currentUser);
       console.log("this is updated user", updatedUser);
       return updatedUser;

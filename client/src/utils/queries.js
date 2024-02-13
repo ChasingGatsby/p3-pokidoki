@@ -19,7 +19,8 @@ export const GET_OWN_PROFILE = gql`
       matches {
         firstName
         lastName
-        image
+
+        userName
       }
     }
   }
@@ -106,6 +107,22 @@ export const GET_ALL_PROFILES = gql`
       }
       berry
       heldItem
+    }
+  }
+`;
+export const GET_MATCHES = gql`
+  query getMatches {
+    getMatches {
+      userName
+
+      firstName
+      lastName
+      matches {
+        _id
+        firstName
+        lastName
+        userName
+      }
     }
   }
 `;
