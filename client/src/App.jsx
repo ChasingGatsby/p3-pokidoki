@@ -1,4 +1,5 @@
 import "./style.css";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -10,7 +11,8 @@ import { setContext } from "@apollo/client/link/context";
 
 import Navbar from "./components/NavBar";
 import SidebarProfile from "./components/SidebarProfile";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
+import ThemeContext from "./utils/themeContext";
 
 const httpLink = createHttpLink({ uri: "/graphql" });
 
@@ -34,17 +36,20 @@ const client = new ApolloClient({
 
 function App() {
   const isLoggedIn = !!localStorage.getItem("id_token");
+  const [theme, setTheme] = useState("Poke Ball");
 
   return (
     <ApolloProvider client={client}>
-      <Navbar />
-      <div className="row">
-        {isLoggedIn && <SidebarProfile />}
-        <div className={isLoggedIn ? "col-9" : "col-12"}>
-          <Outlet />
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Navbar />
+        <div className="row">
+          {isLoggedIn && <SidebarProfile />}
+          <div className={isLoggedIn ? "col-9" : "col-12"}>
+            <Outlet />
+          </div>
         </div>
-      </div>
-      {/* <Footer /> */}
+        <Footer />
+      </ThemeContext.Provider>
     </ApolloProvider>
   );
 }

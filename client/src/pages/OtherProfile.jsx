@@ -43,6 +43,7 @@ function OtherProfile() {
           <h1 className="card-title">
             {data.getOtherProfile.firstName} {data.getOtherProfile.lastName}
           </h1>
+          <h3>@{data.getOtherProfile.userName}</h3>
           <img
             src={data.getOtherProfile.pokemon.image}
             className="card-img-top"
