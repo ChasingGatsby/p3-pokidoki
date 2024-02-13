@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_OTHER_PROFILE } from "../utils/queries";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
-
+import { ADD_MATCH } from "../utils/mutations";
 import MessageForm from "../components/MessageForm";
 
 function OtherProfile() {
@@ -12,7 +12,17 @@ function OtherProfile() {
     variables: { id: id },
   });
   console.log(id, data);
-  console.log();
+
+  const [addMatch, { data: mutationData }] = useMutation(ADD_MATCH);
+
+  const handleAddMatch = () => {
+    addMatch({
+      variables: {
+        userName: data.getOtherProfile.userName,
+        matchId: data.getOtherProfile._id,
+      },
+    });
+  };
 
   if (!Auth.loggedIn()) {
     return (
@@ -29,6 +39,7 @@ function OtherProfile() {
   return (
     <div className="container">
       <h1>Other Profile</h1>
+      <button onClick={handleAddMatch}>Add Match</button>
       <p>ID: {data.getOtherProfile._id}</p>
       <p>Username: {data.getOtherProfile.username}</p>
       <p>Email: {data.getOtherProfile.email}</p>

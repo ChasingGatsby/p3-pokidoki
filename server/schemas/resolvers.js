@@ -27,6 +27,21 @@ const resolvers = {
   },
 
   Mutation: {
+    addMatch: async (parent, { userName }, context) => {
+      const newMatch = await User.findOne({ userName: userName });
+      console.log(newMatch);
+      const currentUser = context.user;
+      const updatedUser = await User.findByIdAndUpdate(
+        currentUser._id,
+        { $addToSet: { matches: newMatch._id } },
+        { new: true }
+      );
+      console.log("this is current", currentUser);
+      console.log("this is updated user", updatedUser);
+      return updatedUser;
+      // Check if the user exists
+    },
+
     addUser: async (parent, { userName, email, password }) => {
       const user = await User.create({ userName, email, password });
       const token = signToken(user);
@@ -57,17 +72,22 @@ const resolvers = {
     ) => {
       // Find the user by _id
       const user = await User.findById({ _id: context.user._id });
-      console.log(`this is context.user.......`, context.user);
 
       // Check if the user exists
       if (!user) {
         throw new Error("User not found");
       }
-
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+      );
+      const data = await response.json();
+      const typeData = data.types[0].type.name;
       // Update the user with the new information
       user.firstName = firstName;
       user.lastName = lastName;
       user.pokemon.name = pokemon;
+      user.pokemon.type = typeData;
+      user.pokemon.image = `https://img.pokemondb.net/artwork/large/${pokemon}.jpg`;
       user.heldItem = heldItem;
       user.berry = berry;
       user.bio = bio;
@@ -89,7 +109,7 @@ const resolvers = {
     sendMessage: async (_, { to, text }, context) => {
       // Check if the user is authenticated
       if (!context.user) {
-        throw new Error('You must be logged in to send a message.');
+        throw new Error("You must be logged in to send a message.");
       }
 
       // Create a new message
@@ -107,7 +127,6 @@ const resolvers = {
     },
   },
 };
-
 module.exports = resolvers;
 
 // new comment for testing
