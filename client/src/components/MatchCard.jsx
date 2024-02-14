@@ -1,32 +1,43 @@
 import { Link } from "react-router-dom";
-
+import pokeBallC from "../images/pokeballz_closed.png";
+import pokeBallO from "../images/pokeballz_open.png";
 function MatchCard(props) {
   return (
     <Link to={`/profile/${props.id}`}>
-      <div className="card m-2" style={{ width: "18rem" }}>
-        <div className="card-body">
+      <div
+        className="card m-2"
+        style={{ width: "40rem", backgroundColor: "rgb(255,255, 255)" }}
+      >
+        <div
+          className="card-body"
+          style={{
+            wordWrap: "break-word",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {" "}
+          Trainer Card:
           <h5 className="card-title">
             {props.firstName} {props.lastName}
           </h5>
-          <h6>@{props.userName}</h6>
-          <p>{props.id}</p>
-          <p>{props.pokemon}</p>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            <Link to={`/profile/${props.id}`}>
+              <div className="pokeball-container">
+                <img src={pokeBallC} className="pokeball-front"></img>
+                <img src={pokeBallO} className="pokeball-back"></img>
+                <div className="pokeball-text">
+                  <p>Trainer: @{props.userName}</p>
+                  <p>Trainer no. {props.id}</p>
+                </div>
+              </div>
+            </Link>
+          </ul>
         </div>
       </div>
     </Link>
-    // <div className="card m-2" style={{ width: "18rem" }}>
-    //   <div className="card-body">
-    //     <h5 className="card-title">
-    //       {props.firstName} {props.lastName}
-    //     </h5>
-    //     <h6>@{props.userName}</h6>
-    //     <p>{props.id}</p>
-
-    //     <Link to={`/profile/${props.id}`} className="btn btn-primary">
-    //       View Profile
-    //     </Link>
-    //   </div>
-    // </div>
   );
 }
 

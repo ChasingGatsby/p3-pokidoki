@@ -1,6 +1,9 @@
 import { useQuery, useReadQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import { GET_OWN_PROFILE } from "../utils/queries";
+import { Link } from "react-router-dom";
+import pokeBallC from "../images/pokeballz_closed.png";
+import pokeBallO from "../images/pokeballz_open.png";
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_OWN_PROFILE);
@@ -9,7 +12,6 @@ const Home = () => {
   if (!Auth.loggedIn()) {
     return (
       <div>
-        <p>You must be logged in to view this page.</p>
         <li>
           <a href="/signup">Signup</a>
         </li>
@@ -22,10 +24,17 @@ const Home = () => {
     const userEmail = data.getOwnProfile && data.getOwnProfile.userName;
     return (
       <main className="col-9">
-        {" "}
-        <div>Just placeholder text </div>{" "}
-        <div>
-          <p>Welcome, {userEmail}!</p>
+        <div
+          className="card"
+          style={{ borderColor: "white", fontSize: "50px" }}
+        >
+          <p>Welcome , {userEmail}!</p>
+          <Link to="/search">
+            <div className="pokeball-container">
+              <img src={pokeBallC} className="pokeball-front"></img>
+              <img src={pokeBallO} className="pokeball-back"></img>
+            </div>
+          </Link>
         </div>
       </main>
     );

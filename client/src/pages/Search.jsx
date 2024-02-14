@@ -77,14 +77,14 @@ export default function Search() {
   }
 
   return (
-    <div className="container m-5">
+    <div className="container m-5 card" style={{ borderColor: "white" }}>
       <div className="row">
-        <div className="col">
+        <div className="col ">
           <form className="form-inline">
             <label htmlFor="dropdown">Search for a Pokemon!</label>
-            <div className="form-group my-3 d-flex align-items-center">
+            <div className="form-group my-3 d-flex align-items-center ">
               <select
-                className="form-control mx-2"
+                className="form-control mx-2  "
                 id="pokemondropdown"
                 style={{ width: "50%" }}
                 onChange={handleChange}
@@ -154,11 +154,15 @@ export default function Search() {
         {activeQuery === "pokemon" &&
           !loading &&
           !error &&
-          data.getProfilesByPokemon.length === 0 && <label>No results found</label>}
+          data.getProfilesByPokemon.length === 0 && (
+            <label>No results found</label>
+          )}
         {activeQuery === "type" &&
           !loadingType &&
           !errorType &&
-          dataType.getProfilesByType.length === 0 && <label>No results found</label>}
+          dataType.getProfilesByType.length === 0 && (
+            <label>No results found</label>
+          )}
         <div className="row">
           {activeQuery === "pokemon" &&
             data &&

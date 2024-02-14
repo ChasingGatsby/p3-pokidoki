@@ -3,6 +3,9 @@ import Auth from "../utils/auth";
 import { GET_OWN_PROFILE } from "../utils/queries";
 import { GET_OTHER_PROFILE, GET_MATCHES } from "../utils/queries";
 import MatchCard from "../components/MatchCard";
+import { Link } from "react-router-dom";
+import pokeBallC from "../images/pokeballz_closed.png";
+import pokeBallO from "../images/pokeballz_open.png";
 const Matches = () => {
   const { loading, error, data } = useQuery(GET_MATCHES);
   if (loading) return <p>loading</p>;
@@ -27,19 +30,19 @@ const Matches = () => {
     return (
       <main className="col-9">
         {" "}
-        <h2>My Matches: </h2>{" "}
+        <a>My Matches: </a>{" "}
         <div>
-          <p>Welcome, {userData.firstName}!</p>
           <div>
             {userMatches.map((match) => (
+              
               <MatchCard
                 firstName={match.firstName}
                 lastName={match.lastName}
                 userName={match.userName}
                 id={match._id}
-                pokemon={match.pokemon}
               />
             ))}
+          
           </div>
         </div>
       </main>
@@ -47,3 +50,5 @@ const Matches = () => {
   }
 };
 export default Matches;
+
+
