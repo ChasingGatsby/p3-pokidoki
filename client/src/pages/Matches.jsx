@@ -28,7 +28,7 @@ const Matches = () => {
     const userPokemon = userMatches;
     console.log(userData);
     return (
-      <main className="col-9">
+      <main className="col-9 my-3">
         <a>My Matches: </a>
         <div>
           <div>

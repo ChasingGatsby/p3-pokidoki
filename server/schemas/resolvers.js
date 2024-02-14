@@ -15,12 +15,20 @@ const resolvers = {
     getOtherProfile: async (_, { _id }, context) => {
       return await User.findById(_id);
     },
-    getProfilesByPokemon: async (parent, { name }) => {
-      const results = await User.find({ "pokemon.name": name });
+    getProfilesByPokemon: async (parent, { name }, context) => {
+      const results = await User.find({
+        "pokemon.name": name,
+        userName: { $ne: context.user.userName },
+      });
+      console.log(results);
+
       return results;
     },
-    getProfilesByType: async (parent, { type }) => {
-      const results = await User.find({ "pokemon.type": { $in: [type] } });
+    getProfilesByType: async (parent, { type }, context) => {
+      const results = await User.find({
+        "pokemon.type": { $in: [type] },
+        userName: { $ne: context.user.userName },
+      });
       console.log(results);
       return results;
     },
