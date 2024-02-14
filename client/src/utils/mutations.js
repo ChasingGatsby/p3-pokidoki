@@ -75,8 +75,12 @@ export const ADD_MATCH = gql`
 export const SEND_MESSAGE = gql`
   mutation SendMessage($to: ID!, $text: String!) {
     sendMessage(to: $to, text: $text) {
-      from
-      to
+      from {
+        _id
+      }
+      to {
+        _id
+      }
       text
       date
     }
