@@ -11,7 +11,11 @@ const Home = () => {
   if (error) return <p>Error </p>;
   if (!Auth.loggedIn()) {
     return (
-      <div>
+      <div style={{ height: "75vh", position: "relative" }}>
+        <div
+          className="ballCircle"
+          style={{ position: "absolute", top: "-45px" }}
+        ></div>
         <li>
           <a href="/signup">Signup</a>
         </li>
@@ -28,8 +32,6 @@ const Home = () => {
           className="card"
           style={{ borderColor: "white", fontSize: "50px" }}
         >
-          
-
           <p>Welcome , {userName}!</p>
           <Link to="/search">
             <div className="pokeball-container">
