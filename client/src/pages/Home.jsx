@@ -2,8 +2,8 @@ import { useQuery, useReadQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import { GET_OWN_PROFILE } from "../utils/queries";
 import { Link } from "react-router-dom";
-import pokeBallC from "../images/pokeballz_closed.png";
-import pokeBallO from "../images/pokeballz_open.png";
+import pokeBallC from "../images/pokeBallz_closed.png";
+import pokeBallO from "../images/pokeBallz_open.png";
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_OWN_PROFILE);
