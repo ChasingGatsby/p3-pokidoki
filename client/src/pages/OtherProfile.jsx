@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import {
   GET_OTHER_PROFILE,
@@ -6,10 +7,10 @@ import {
   GET_MATCHES,
   GET_OTHER_MATCHES,
 } from "../utils/queries";
-import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { ADD_MATCH } from "../utils/mutations";
 import MessageForm from "../components/MessageForm";
+import Message from "../components/Message";
 
 function OtherProfile() {
   const { id } = useParams();
@@ -23,6 +24,8 @@ function OtherProfile() {
   });
 
   const [addMatch, { data: mutationData }] = useMutation(ADD_MATCH);
+
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   if (!Auth.loggedIn()) {
     return (
@@ -51,22 +54,12 @@ function OtherProfile() {
     otherUserMatches = otherMatchesData.getOtherMatches.matches;
   }
 
-  console.log(currentUserMatches);
-  console.log(otherUserMatches);
-
   const isMatched = currentUserMatches.some(
     (match) => match._id === otherUserID
   );
   const hasMatched = otherUserMatches.some(
     (match) => match._id === currentUserID
   );
-
-  // const containsYourId = matchesData.getOtherMatches.matches.some(
-  //   (match) => match._id === currentUserID
-  // );
-  // const containsOtherId = matchesData.getOtherMatches.matches.some(
-  //   (match) => match._id === otherUserID
-  // );
 
   const handleAddMatch = () => {
     console.log(data.getOtherProfile.userName);
@@ -75,6 +68,7 @@ function OtherProfile() {
         userName: data.getOtherProfile.userName,
       },
     }).then((res) => console.log(res));
+    setButtonClicked(true);
   };
 
   return (
@@ -93,7 +87,11 @@ function OtherProfile() {
           />
           <h4>Bio:</h4>
           <p className="card-text">{data.getOtherProfile.bio}</p>
-          {!isMatched && !hasMatched && <button onClick={handleAddMatch}>Add Match</button>}
+          {!isMatched && !hasMatched && (
+            <button onClick={handleAddMatch} disabled={buttonClicked}>
+              {buttonClicked ? "Matched" : "Add Match"}
+            </button>
+          )}
         </div>
       </div>
       <div className="container">
@@ -103,6 +101,9 @@ function OtherProfile() {
             toID={data.getOtherProfile._id}
           />
         )}
+      </div>
+      <div>
+        <Message from={currentUserID} to={otherUserID} toName={data.getOtherProfile.userName} fromName={ownProfileData.getOwnProfile.userName} />
       </div>
     </div>
   );

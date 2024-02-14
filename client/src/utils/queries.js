@@ -142,3 +142,24 @@ export const GET_OTHER_MATCHES = gql`
     }
   }
 `;
+
+export const GET_MESSAGES = gql`
+  query getMessages($to: ID!) {
+    getMessages(to: $to) {
+      text
+      date
+      from {
+        _id
+        userName
+        firstName
+        lastName
+      }
+      to {
+        _id
+        userName
+        firstName
+        lastName
+      }
+    }
+  }
+`;
