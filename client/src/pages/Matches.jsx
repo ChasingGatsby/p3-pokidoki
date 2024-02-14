@@ -29,12 +29,10 @@ const Matches = () => {
     console.log(userData);
     return (
       <main className="col-9">
-        {" "}
-        <a>My Matches: </a>{" "}
+        <a>My Matches: </a>
         <div>
           <div>
             {userMatches.map((match) => (
-              
               <MatchCard
                 firstName={match.firstName}
                 lastName={match.lastName}
@@ -42,7 +40,6 @@ const Matches = () => {
                 id={match._id}
               />
             ))}
-          
           </div>
         </div>
       </main>
@@ -50,5 +47,3 @@ const Matches = () => {
   }
 };
 export default Matches;
-
-
