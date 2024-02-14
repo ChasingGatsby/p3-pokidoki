@@ -71,14 +71,35 @@ function OtherProfile() {
     setButtonClicked(true);
   };
 
+  const berryUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" +
+    data.getOtherProfile.berry +
+    "-berry.png";
+  const itemUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" +
+    data.getOtherProfile.heldItem +
+    ".png";
+
   return (
     <div className="container">
-      <div className="card mb-2">
+      <div className="card my-4">
         <div className="card-body">
           <h1 className="card-title">
             {data.getOtherProfile.firstName} {data.getOtherProfile.lastName}
           </h1>
-          <h3>@{data.getOtherProfile.userName}</h3>
+          <h3>
+            @{data.getOtherProfile.userName}
+            <img
+              src={berryUrl}
+              alt={data.getOtherProfile.berry}
+              style={{ width: "50px" }}
+            ></img>
+            <img
+              src={itemUrl}
+              alt={data.getOtherProfile.heldItem}
+              style={{ width: "50px" }}
+            ></img>
+          </h3>
           <img
             src={data.getOtherProfile.pokemon.image}
             className="card-img-top"

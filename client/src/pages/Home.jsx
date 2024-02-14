@@ -23,7 +23,7 @@ const Home = () => {
   } else {
     const userName = data.getOwnProfile && data.getOwnProfile.userName;
     return (
-      <main className="col-9">
+      <main className="col-9 my-4">
         <div
           className="card"
           style={{ borderColor: "white", fontSize: "50px" }}

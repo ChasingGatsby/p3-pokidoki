@@ -11,17 +11,22 @@ function Message(props) {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error! {error.message}</div>;
 
-  console.log(data.getMessages)
-
   return (
-    <div>
-      {data.getMessages.map((message) => {
+    <div className="d-flex flex-column">
+      {data.getMessages.map((message, index) => {
+        const isCurrentUser = message.from._id === props.from;
         const timestamp = parseInt(message.date);
         const date = moment(timestamp);
         const formattedDate = date.format("MM/DD/YY, h:mm a");
         return (
-          <div className="card my-2">
-            <h5 className="card-header">
+          <div
+            className={`card ${isCurrentUser ? "mr-auto" : ""}`}
+            style={{ width: "68%" }}
+          >
+            <h5
+              className="card-header"
+              style={{ backgroundColor: isCurrentUser ? "red" : "" }}
+            >
               {message.from.userName} on {formattedDate}
             </h5>
             <div className="card-body">
