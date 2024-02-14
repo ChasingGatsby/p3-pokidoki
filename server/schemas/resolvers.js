@@ -31,6 +31,10 @@ const resolvers = {
       );
       return populatedUser;
     },
+    getOtherMatches: async (parent, { _id }, context) => {
+      const populatedUser = await User.findById(_id).populate("matches");
+      return populatedUser;
+    }
   },
 
   Mutation: {
@@ -108,6 +112,7 @@ const resolvers = {
       // Save the updated user to the database
       const updatedUser = await user.save();
       console.log(`this is the user`, user);
+      console.log(user.berry)
       // Return the updated user and a new token
       return {
         token: signToken(user),

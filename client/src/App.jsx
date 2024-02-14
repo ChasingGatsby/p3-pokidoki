@@ -42,7 +42,7 @@ function App() {
     <ApolloProvider client={client}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <Navbar />
-        <div className="row">
+        <div className="row" style={{maxWidth: "100%"}}>
           {isLoggedIn && <SidebarProfile />}
           <div className={isLoggedIn ? "col-9" : "col-12"}>
             <Outlet />

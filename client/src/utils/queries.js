@@ -126,3 +126,19 @@ export const GET_MATCHES = gql`
     }
   }
 `;
+
+export const GET_OTHER_MATCHES = gql`
+  query getOtherMatches($id: ID!) {
+    getOtherMatches(_id: $id) {
+      userName
+      firstName
+      lastName
+      matches {
+        _id
+        firstName
+        lastName
+        userName
+      }
+    }
+  }
+`;

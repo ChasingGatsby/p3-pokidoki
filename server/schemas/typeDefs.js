@@ -57,6 +57,7 @@ type Auth {
 
 type Query {
   getMatches: Profile
+  getOtherMatches(_id: ID!): Profile
   getOwnProfile: Profile
   getOtherProfile(_id: ID!): Profile
   getAllProfiles: [Users]
@@ -65,7 +66,7 @@ type Query {
 }
 
 type Mutation {
-  addMatch (userName: String, firstName: String): Profile
+  addMatch (userName: String): Profile
   addUser(userName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   editUser(firstName: String!, lastName: String!, pokemon: String!, heldItem: String!, berry: String!, bio: String!, ) : Auth 
