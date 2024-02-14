@@ -18,7 +18,7 @@ const Settings = () => {
 
   return (
     <main>
-      <div className="container mt-2">
+      <div className="container mt-2 card" style={{ borderColor: "white" }}>
         <div class="list-group">
           <button
             type="button"

@@ -27,7 +27,7 @@ const Sidebar = () => {
             alt={user.pokemon.name}
             style={{ width: "100%", height: "200px", objectFit: "cover" }}
           />
-          <p className="card-text">{user.bio}</p>
+          <p className="card-text" style = {{fontSize: "10px"}}>{user.bio}</p>
         </div>
       </div>
     </div>

@@ -11,16 +11,19 @@ const NavBar = () => {
   const { theme } = useContext(ThemeContext);
 
   const themeStyles = {
-    'Poke Ball': 'red',
-    'Great Ball': 'blue',
-    'Ultra Ball': 'orange',
-    'Master Ball': 'purple',
+    "Poke Ball": "red",
+    "Great Ball": "blue",
+    "Ultra Ball": "orange",
+    "Master Ball": "purple",
   };
 
   if (!Auth.loggedIn()) {
     return (
       <header
-        style={{ backgroundColor: themeStyles[theme], borderBottom: "solid 1px black" }}
+        style={{
+          backgroundColor: themeStyles[theme],
+          borderBottom: "solid 1px black",
+        }}
       >
         <a href="/">
           <img className="logo" src={logo} alt="PokiDoki" />
@@ -61,7 +64,10 @@ const NavBar = () => {
   }
   return (
     <header
-      style={{ backgroundColor: themeStyles[theme], borderBottom: "solid 1px black" }}
+      style={{
+        backgroundColor: themeStyles[theme],
+        borderBottom: "solid 1px black",
+      }}
     >
       <a href="/">
         <img className="logo" src={logo} alt="PokiDoki" />
@@ -91,7 +97,7 @@ const NavBar = () => {
             <a href="/matches">Matches</a>
           </li>
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <a href="/" onClick={handleLogout}>Logout</a>
           </li>
         </ul>
       </nav>

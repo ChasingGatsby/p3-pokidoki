@@ -29,7 +29,6 @@ const Profile = (props) => {
         heldItem: profileData.getOwnProfile.heldItem,
         berry: profileData.getOwnProfile.berry,
         bio: profileData.getOwnProfile.bio,
-        profilePic: profileData.getOwnProfile.profilePic,
       });
     }
   }, [loading, profileData]);
@@ -83,7 +82,6 @@ const Profile = (props) => {
       heldItem: profileData.getOwnProfile.heldItem,
       berry: profileData.getOwnProfile.berry,
       bio: profileData.getOwnProfile.bio,
-      profilePic: profileData.getOwnProfile.profilePic,
     });
   };
 
@@ -97,19 +95,15 @@ const Profile = (props) => {
   }
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
+    <main
+      className="flex-row justify-center mb-4 "
+      
+    >
+      <div className="col-12 col-lg-10" >
+        <div className="card" style={{ borderColor: "white" }}>
           <h4>
             {" "}
             <div className="card-header bg-dark text-light p-2">Profile {}</div>
-            <div>
-              <img
-                src={formState.profilePic}
-                alt="Profile Picture"
-                style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-              />
-            </div>
           </h4>
 
           <div className="card-body">
