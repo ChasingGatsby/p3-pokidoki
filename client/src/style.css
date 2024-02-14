@@ -133,7 +133,6 @@ button {
 }
 
 .footer {
-
   position: fixed;
   left: 0;
   bottom: 0;
@@ -184,13 +183,13 @@ button {
 .pokeball-container:hover .pokeball-text {
   opacity: 1;
 }
+
 /* end pokeball stuff
  */
 
-    position: fixed;
+/* position: fixed;
     left: 0;
     bottom: 0;
     color: black;
     text-align: center;
-  }
-
+  } */

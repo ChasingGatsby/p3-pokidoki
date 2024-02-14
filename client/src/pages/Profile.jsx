@@ -69,7 +69,7 @@ const Profile = (props) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    console.log(value)
+    console.log(value);
 
     setFormState({
       ...formState,
@@ -103,11 +103,8 @@ const Profile = (props) => {
   };
 
   return (
-    <main
-      className="flex-row justify-center mb-4 "
-      
-    >
-      <div className="col-12 col-lg-10" >
+    <main className="flex-row justify-center mb-4 ">
+      <div className="col-12 col-lg-10">
         <div className="card" style={{ borderColor: "white" }}>
           <h4>
             {" "}
@@ -215,7 +212,15 @@ const Profile = (props) => {
                   type="text"
                   value={formState.bio}
                   onChange={handleChange}
-                  style={{ display: "block", marginBottom: "1rem" }}
+                  style={{
+                    display: "block",
+                    marginBottom: "1rem",
+                    width: "100%",
+                    maxWidth: "25vw",
+                    height: "8rem",
+                    wordWrap: "break-word",
+                    
+                  }}
                 />
                 {/* <label
                   htmlFor="ProfilePic"
