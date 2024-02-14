@@ -17,9 +17,16 @@ lastName: String
 
 }
 
+type Messager {
+  _id: ID!
+  userName: String!
+  firstName: String
+  lastName: String
+}
+
 type Message {
-  from: ID!
-  to: ID!
+  from: Messager!
+  to: Messager!
   text: String
   date: String
 }
@@ -50,6 +57,7 @@ type Profile {
 
 }
 
+
 type Auth {
   token: ID!
   user: Profile
@@ -63,6 +71,7 @@ type Query {
   getAllProfiles: [Users]
   getProfilesByPokemon(name: String!): [Users]
   getProfilesByType(type: String!): [Users]
+  getMessages( to: ID!): [Message]
 }
 
 type Mutation {
