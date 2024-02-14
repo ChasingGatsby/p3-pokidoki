@@ -34,7 +34,23 @@ const resolvers = {
     getOtherMatches: async (parent, { _id }, context) => {
       const populatedUser = await User.findById(_id).populate("matches");
       return populatedUser;
-    }
+    },
+    getMessages: async (parent, { from, to }, context) => {
+      if (!context.user) {
+        throw new Error("You must be logged in to view messages.");
+      }
+      const messages = await Message.find({
+        $or: [
+          { from: context.user._id, to },
+          { from: to, to: context.user._id },
+        ],
+      })
+        .populate("from")
+        .populate("to")
+        .sort({ date: -1 });
+
+      return messages;
+    },
   },
 
   Mutation: {
@@ -112,7 +128,7 @@ const resolvers = {
       // Save the updated user to the database
       const updatedUser = await user.save();
       console.log(`this is the user`, user);
-      console.log(user.berry)
+      console.log(user.berry);
       // Return the updated user and a new token
       return {
         token: signToken(user),
