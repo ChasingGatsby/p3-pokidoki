@@ -87,7 +87,7 @@ function OtherProfile() {
           />
           <h4>Bio:</h4>
           <p className="card-text">{data.getOtherProfile.bio}</p>
-          {!isMatched && !hasMatched && (
+          {!isMatched && (
             <button onClick={handleAddMatch} disabled={buttonClicked}>
               {buttonClicked ? "Matched" : "Add Match"}
             </button>
@@ -103,7 +103,12 @@ function OtherProfile() {
         )}
       </div>
       <div>
-        <Message from={currentUserID} to={otherUserID} toName={data.getOtherProfile.userName} fromName={ownProfileData.getOwnProfile.userName} />
+        <Message
+          from={currentUserID}
+          to={otherUserID}
+          toName={data.getOtherProfile.userName}
+          fromName={ownProfileData.getOwnProfile.userName}
+        />
       </div>
     </div>
   );
