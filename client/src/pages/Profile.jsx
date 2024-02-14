@@ -108,7 +108,7 @@ const Profile = (props) => {
         <div className="card" style={{ borderColor: "white" }}>
           <h4>
             {" "}
-            <div className="card-header bg-dark text-light p-2">Profile {}</div>
+            <div className="card-header bg-white text-dark p-2">Profile {}</div>
           </h4>
 
           <div className="card-body">
@@ -219,7 +219,6 @@ const Profile = (props) => {
                     maxWidth: "25vw",
                     height: "8rem",
                     wordWrap: "break-word",
-                    
                   }}
                 />
                 {/* <label

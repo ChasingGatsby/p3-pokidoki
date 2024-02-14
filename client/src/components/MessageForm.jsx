@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { SEND_MESSAGE } from '../utils/mutations';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { SEND_MESSAGE } from "../utils/mutations";
 
 function MessageForm(props) {
-  const [messageText, setMessageText] = useState('');
+  const [messageText, setMessageText] = useState("");
 
   const [sendMessage, { data }] = useMutation(SEND_MESSAGE);
 
@@ -14,7 +14,7 @@ function MessageForm(props) {
       const { data } = await sendMessage({
         variables: { to: props.toID, text: messageText },
       });
-      setMessageText('');
+      setMessageText("");
 
       // Handle successful message sending (e.g., clear the form)
     } catch (error) {
@@ -23,7 +23,7 @@ function MessageForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="card col-8">
       <input
         type="text"
         value={messageText}
