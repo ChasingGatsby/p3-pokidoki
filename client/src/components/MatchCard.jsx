@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import pokeBallC from "../images/pokeballz_closed.png";
-import pokeBallO from "../images/pokeballz_open.png";
+import pokeBallC from "../images/pokeBallz_closed.png";
+import pokeBallO from "../images/pokeBallz_open.png";
+
 function MatchCard(props) {
   return (
     <div
