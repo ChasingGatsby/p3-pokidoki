@@ -18,7 +18,9 @@ const NavBar = () => {
   };
 
   if (!Auth.loggedIn()) {
+   
     return (
+      
       <header
         style={{
           backgroundColor: themeStyles[theme],
@@ -59,7 +61,7 @@ const NavBar = () => {
             </li>
           </ul>
         </nav>
-        <div className="ballCircle"></div>
+       
       </header>
     );
   }
