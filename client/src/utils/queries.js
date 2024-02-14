@@ -45,7 +45,7 @@ export const GET_OTHER_PROFILE = gql`
       matches {
         firstName
         lastName
-        image
+       
       }
     }
   }

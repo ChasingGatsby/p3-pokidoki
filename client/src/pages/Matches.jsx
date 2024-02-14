@@ -22,7 +22,8 @@ const Matches = () => {
   } else {
     const userData = data.getMatches;
     const userMatches = data.getMatches.matches;
-    console.log(userMatches);
+    const userPokemon = userMatches;
+    console.log(userData);
     return (
       <main className="col-9">
         {" "}
@@ -31,7 +32,13 @@ const Matches = () => {
           <p>Welcome, {userData.firstName}!</p>
           <div>
             {userMatches.map((match) => (
-              <MatchCard name={match.firstName} />
+              <MatchCard
+                firstName={match.firstName}
+                lastName={match.lastName}
+                userName={match.userName}
+                id={match._id}
+                pokemon={match.pokemon}
+              />
             ))}
           </div>
         </div>
