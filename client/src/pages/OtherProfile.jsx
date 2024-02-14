@@ -1,6 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_OTHER_PROFILE, GET_OWN_PROFILE } from "../utils/queries";
+import {
+  GET_OTHER_PROFILE,
+  GET_OWN_PROFILE,
+  GET_MATCHES,
+  GET_OTHER_MATCHES,
+} from "../utils/queries";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { ADD_MATCH } from "../utils/mutations";
@@ -12,6 +17,11 @@ function OtherProfile() {
     variables: { id: id },
   });
   const { data: ownProfileData } = useQuery(GET_OWN_PROFILE);
+  const { loading: matchesLoading, data: matchesData } = useQuery(GET_MATCHES);
+  const { data: otherMatchesData } = useQuery(GET_OTHER_MATCHES, {
+    variables: { id: id },
+  });
+
   const [addMatch, { data: mutationData }] = useMutation(ADD_MATCH);
 
   if (!Auth.loggedIn()) {
@@ -29,19 +39,43 @@ function OtherProfile() {
   // Check if data and data.getOtherProfile exist before trying to access data.getOtherProfile's properties
   if (!data || !data.getOtherProfile) return <div>No profile found</div>;
 
+  const currentUserID = ownProfileData.getOwnProfile._id;
+  const otherUserID = data.getOtherProfile._id;
+  let currentUserMatches = [];
+  let otherUserMatches = [];
+  if (matchesData && matchesData.getMatches) {
+    currentUserMatches = matchesData.getMatches.matches;
+  }
+
+  if (otherMatchesData && otherMatchesData.getOtherMatches) {
+    otherUserMatches = otherMatchesData.getOtherMatches.matches;
+  }
+
+  console.log(currentUserMatches);
+  console.log(otherUserMatches);
+
+  const isMatched = currentUserMatches.some(
+    (match) => match._id === otherUserID
+  );
+  const hasMatched = otherUserMatches.some(
+    (match) => match._id === currentUserID
+  );
+
+  // const containsYourId = matchesData.getOtherMatches.matches.some(
+  //   (match) => match._id === currentUserID
+  // );
+  // const containsOtherId = matchesData.getOtherMatches.matches.some(
+  //   (match) => match._id === otherUserID
+  // );
+
   const handleAddMatch = () => {
-    console.log(data.getOtherProfile.userName)
+    console.log(data.getOtherProfile.userName);
     addMatch({
       variables: {
         userName: data.getOtherProfile.userName,
       },
-    }).then((res)=>console.log(res));
+    }).then((res) => console.log(res));
   };
-
-  const currentUserID = ownProfileData.getOwnProfile._id;
-  const otherUserID = data.getOtherProfile._id;
-  const isMatched = data.getOtherProfile.matches.includes(currentUserID);
-  const hasMatched = ownProfileData.getOwnProfile.matches.includes(otherUserID);
 
   return (
     <div className="container">
