@@ -57,6 +57,7 @@ type Auth {
 
 type Query {
   getMatches: Profile
+  getOtherMatches(_id: ID!): Profile
   getOwnProfile: Profile
   getOtherProfile(_id: ID!): Profile
   getAllProfiles: [Users]

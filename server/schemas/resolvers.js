@@ -31,6 +31,10 @@ const resolvers = {
       );
       return populatedUser;
     },
+    getOtherMatches: async (parent, { _id }, context) => {
+      const populatedUser = await User.findById(_id).populate("matches");
+      return populatedUser;
+    }
   },
 
   Mutation: {
