@@ -8,6 +8,14 @@ import { useLazyQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 
 const Profile = (props) => {
+  if (!Auth.loggedIn()) {
+    return (
+      <div>
+        <p>You must be logged in to view this page.</p>
+        <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link>
+      </div>
+    );
+  }
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -43,6 +51,13 @@ const Profile = (props) => {
       .then((data) => setPokemon(data.results));
   }, []);
 
+  const [berry, setBerry] = useState([]);
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/berry")
+      .then((response) => response.json())
+      .then((data) => setBerry(data.results));
+  }, []);
+
   function formatName(string) {
     let formattedString = string.charAt(0).toUpperCase() + string.slice(1);
     formattedString = formattedString.replace(/-/g, " ");
@@ -54,6 +69,8 @@ const Profile = (props) => {
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    console.log(value)
 
     setFormState({
       ...formState,
@@ -86,15 +103,6 @@ const Profile = (props) => {
       profilePic: profileData.getOwnProfile.profilePic,
     });
   };
-
-  if (!Auth.loggedIn()) {
-    return (
-      <div>
-        <p>You must be logged in to view this page.</p>
-        <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link>
-      </div>
-    );
-  }
 
   return (
     <main className="flex-row justify-center mb-4">
@@ -186,15 +194,20 @@ const Profile = (props) => {
                 >
                   Now for your Berry!
                 </label>
-                <input
-                  className="form-input"
-                  placeholder="Berry"
+                <select
+                  className="form-control"
+                  id="berrydropdown"
                   name="berry"
                   type="text"
-                  value={formState.berry}
+                  style={{ width: "50%" }}
                   onChange={handleChange}
-                  style={{ display: "block", marginBottom: "1rem" }}
-                />
+                >
+                  {berry.map((berry, index) => (
+                    <option key={index} value={berry.name}>
+                      {formatName(berry.name)}
+                    </option>
+                  ))}
+                </select>
                 <label
                   htmlFor="bio"
                   style={{ display: "block", marginBottom: "1rem" }}

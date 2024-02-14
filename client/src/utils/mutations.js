@@ -62,8 +62,8 @@ export const EDIT_USER = gql`
   }
 `;
 export const ADD_MATCH = gql`
-  mutation addMatch($userName: String!, $firstName: String!) {
-    addMatch(userName: $userName, firstName: $firstName) {
+  mutation addMatch($userName: String!) {
+    addMatch(userName: $userName) {
       matches {
         userName
         firstName
