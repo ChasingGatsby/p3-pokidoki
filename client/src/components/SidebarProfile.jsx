@@ -11,6 +11,15 @@ const Sidebar = () => {
     return <div>Loading...</div>;
   }
 
+  const berryUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" +
+    data.getOwnProfile.berry +
+    "-berry.png";
+  const itemUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/" +
+    data.getOwnProfile.heldItem +
+    ".png";
+
   const user = data.getOwnProfile;
   return (
     <div className="col-2" style={{ height: "100vh", overflow: "auto" }}>
@@ -21,13 +30,27 @@ const Sidebar = () => {
             {user.firstName} {user.lastName}
           </h5>
           <h6>@{user.userName}</h6>
+          <div className="d-flex justify-content-center align-items-center">
+            <img
+              src={berryUrl}
+              alt={data.getOwnProfile.berry}
+              style={{ width: "50px" }}
+            ></img>
+            <img
+              src={itemUrl}
+              alt={data.getOwnProfile.heldItem}
+              style={{ width: "50px" }}
+            ></img>
+          </div>
           <img
             src={user.pokemon.image}
             className="card-img-top my-2"
             alt={user.pokemon.name}
             style={{ width: "100%", height: "200px", objectFit: "cover" }}
           />
-          <p className="card-text" style = {{fontSize: "10px"}}>{user.bio}</p>
+          <p className="card-text" style={{ fontSize: "10px" }}>
+            {user.bio}
+          </p>
         </div>
       </div>
     </div>

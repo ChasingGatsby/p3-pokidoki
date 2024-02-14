@@ -12,7 +12,7 @@
       "image": "https://img.pokemondb.net/artwork/large/orbeetle.jpg"
     },
     "berry": "cheri",
-    "heldItem": "Leftovers"
+    "heldItem": "leftovers"
   },
   {
     "firstName": "Carlos",
@@ -27,7 +27,7 @@
       "image": "https://img.pokemondb.net/artwork/large/kingler.jpg"
     },
     "berry": "chesto",
-    "heldItem": "Mystic Water"
+    "heldItem": "mystic-water"
   },
   {
     "firstName": "Jackson",
@@ -42,7 +42,7 @@
       "image": "https://img.pokemondb.net/artwork/large/jynx.jpg"
     },
     "berry": "yache",
-    "heldItem": "Nevermeltice"
+    "heldItem": "nevermeltice"
   },
   {
     "firstName": "Cameron",
@@ -57,7 +57,7 @@
       "image": "https://img.pokemondb.net/artwork/large/nidoking.jpg"
     },
     "berry": "pecha",
-    "heldItem": "Poison Barb"
+    "heldItem": "poison-barb"
   },
   {
     "firstName": "Lillian",
@@ -72,7 +72,7 @@
       "image": "https://img.pokemondb.net/artwork/large/ponyta.jpg"
     },
     "berry": "rawst",
-    "heldItem": "Charcoal"
+    "heldItem": "charcoal"
   },
   {
     "firstName": "Johnny",
@@ -87,7 +87,7 @@
       "image": "https://img.pokemondb.net/artwork/large/magmar.jpg"
     },
     "berry": "coban",
-    "heldItem": "Charcoal"
+    "heldItem": "charcoal"
   },
   {
     "firstName": "James",
@@ -102,7 +102,7 @@
       "image": "https://img.pokemondb.net/artwork/large/sandslash.jpg"
     },
     "berry": "grepa",
-    "heldItem": "Soft Sand"
+    "heldItem": "quick-claw"
   },
   {
     "firstName": "Jon",
@@ -117,7 +117,7 @@
       "image": "https://img.pokemondb.net/artwork/large/pidgeotto.jpg"
     },
     "berry": "charti",
-    "heldItem": "Sharp Beak"
+    "heldItem": "sharp-beak"
   },
   {
     "firstName": "Josh",
@@ -132,6 +132,6 @@
       "image": "https://img.pokemondb.net/artwork/large/gyarados.jpg"
     },
     "berry": "wacan",
-    "heldItem": "Life Orb"
+    "heldItem": "life-orb"
   }
 ]
