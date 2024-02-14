@@ -133,10 +133,11 @@ button {
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
+  
   background-color: #f8f9fa;
   color: black;
   text-align: center;
@@ -182,4 +183,20 @@ button {
 }
 .pokeball-container:hover .pokeball-text {
   opacity: 1;
+}
+/* more ball stuff */
+
+.ballCircle {
+  border: solid 10px rgb(0, 0, 0);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

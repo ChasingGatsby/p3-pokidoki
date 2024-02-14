@@ -22,7 +22,7 @@ const NavBar = () => {
       <header
         style={{
           backgroundColor: themeStyles[theme],
-          borderBottom: "solid 1px black",
+          borderBottom: "solid 20px black",
         }}
       >
         <a href="/">
@@ -59,6 +59,7 @@ const NavBar = () => {
             </li>
           </ul>
         </nav>
+        <div className="ballCircle"></div>
       </header>
     );
   }
@@ -66,7 +67,8 @@ const NavBar = () => {
     <header
       style={{
         backgroundColor: themeStyles[theme],
-        borderBottom: "solid 1px black",
+        borderBottom: "solid 20px black",
+        position: "relative",
       }}
     >
       <a href="/">
@@ -97,10 +99,13 @@ const NavBar = () => {
             <a href="/matches">Matches</a>
           </li>
           <li>
-            <a href="/" onClick={handleLogout}>Logout</a>
+            <a href="/" onClick={handleLogout}>
+              Logout
+            </a>
           </li>
         </ul>
       </nav>
+      <div className="ballCircle"></div>
     </header>
   );
 };

@@ -21,14 +21,16 @@ const Home = () => {
       </div>
     );
   } else {
-    const userEmail = data.getOwnProfile && data.getOwnProfile.userName;
+    const userName = data.getOwnProfile && data.getOwnProfile.userName;
     return (
       <main className="col-9">
         <div
           className="card"
           style={{ borderColor: "white", fontSize: "50px" }}
         >
-          <p>Welcome , {userEmail}!</p>
+          
+
+          <p>Welcome , {userName}!</p>
           <Link to="/search">
             <div className="pokeball-container">
               <img src={pokeBallC} className="pokeball-front"></img>
