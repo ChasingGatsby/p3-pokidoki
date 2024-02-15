@@ -1,5 +1,6 @@
 # PokiDoki ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-### A project by: Jabriel Cabaluna, Jacob Hairfield, Ava Jamora
+### A PROJECT BY:
+#### Jabriel Cabaluna, Jacob Hairfield, Ava Jamora
 
 ## Description
 
