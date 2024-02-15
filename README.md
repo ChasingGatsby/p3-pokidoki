@@ -1,4 +1,5 @@
 # PokiDoki ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+### Jabriel Cabaluna, Jacob Hairfield, Ava Jamora
 
 ## Description
 
